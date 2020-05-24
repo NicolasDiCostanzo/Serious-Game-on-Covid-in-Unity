@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
 using UnityEngine;
-using Cinemachine;
 
 public class ViewToID : MonoBehaviour
 {
@@ -16,5 +14,20 @@ public class ViewToID : MonoBehaviour
     {
         DeskCam.Priority *= -1;
         enabled = false;
+
+        if (GameManager._GAME_STATE == GameManager.eGameState.Desk)
+        {
+            GameManager._GAME_STATE = GameManager._LAST_SCREEN_STATE;
+        }
+        else
+        {
+            GameManager._LAST_SCREEN_STATE = GameManager._GAME_STATE;
+            GameManager._GAME_STATE = GameManager.eGameState.Desk;
+        }
+    }
+
+    public void ChangeView()
+    {
+        enabled = true;
     }
 }
