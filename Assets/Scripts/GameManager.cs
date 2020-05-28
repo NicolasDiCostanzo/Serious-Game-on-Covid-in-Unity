@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        Debug.Log(_GAME_STATE);
+        //Debug.Log(_GAME_STATE);
     }
 
     public void Switch_Desk_RightScreenView()
