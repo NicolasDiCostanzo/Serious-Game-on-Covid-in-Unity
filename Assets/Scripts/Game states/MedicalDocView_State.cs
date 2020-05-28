@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class MedicalDocView_State : MonoBehaviour
 {
-    CinemachineVirtualCamera IDCam;
-    CinemachineVirtualCamera CamMedicInfo;
+    CinemachineVirtualCamera rightScreenCam;
+    CinemachineVirtualCamera medicalInfoCam;
 
     Text deskViewButtonTxt;
 
@@ -14,8 +14,8 @@ public class MedicalDocView_State : MonoBehaviour
 
     private void OnEnable()
     {
-        IDCam = GameObject.Find("IDCam").GetComponent<CinemachineVirtualCamera>();
-        CamMedicInfo = GameObject.Find("screen_medical_inf").GetComponent<CinemachineVirtualCamera>();
+        rightScreenCam = GameObject.Find("RightScreenCam").GetComponent<CinemachineVirtualCamera>();
+        medicalInfoCam = GameObject.Find("Medical_Info_Cam").GetComponent<CinemachineVirtualCamera>();
 
         deskViewButtonTxt = GameObject.Find("button_crewMember_screen_view").GetComponentInChildren<Text>();
         screenDisplayedButtonTxt = GameObject.Find("button_change_screen").GetComponentInChildren<Text>();
@@ -27,19 +27,18 @@ public class MedicalDocView_State : MonoBehaviour
         deskViewButtonTxt.text = "Go back to desk";
         screenDisplayedButtonTxt.text = "Check crew member's ID";
 
-        if (IDCam.Priority < 1)
-            IDCam.Priority = 1;
+        rightScreenCam.Priority = 1;
 
-        if (CamMedicInfo.Priority < 1)
-            CamMedicInfo.Priority = 1;
+        medicalInfoCam.Priority = 1;
     }
 
     private void OnDisable()
     {
-        CamMedicInfo.Priority = 0;
+        medicalInfoCam.Priority = 0;
 
         if (GameManager._GAME_STATE != GameManager.eGameState.IDView)
         {
+            rightScreenCam.Priority = 0;
             screenDisplayedButtonTxt.enabled = false;
             screenDisplayedButtonImg.enabled = false;
             GameManager._LAST_SCREEN_STATE = GameManager.eGameState.HealthInformationView;

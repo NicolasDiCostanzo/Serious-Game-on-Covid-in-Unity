@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
                 shipScreenState_Script.enabled = true;
                 break;
         }
+
+        Debug.Log(_GAME_STATE);
     }
 
     public void Switch_Desk_RightScreenView()
@@ -88,7 +90,6 @@ public class GameManager : MonoBehaviour
         else
         {
             _GAME_STATE = _LAST_SCREEN_STATE;
-
         }
     }
 

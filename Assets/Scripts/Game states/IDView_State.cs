@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class IDView_State : MonoBehaviour
 {
-    CinemachineVirtualCamera IDCam;
-    CinemachineVirtualCamera CamOnID;
+    CinemachineVirtualCamera rightScreenCam;
+    CinemachineVirtualCamera ID_Cam;
 
     Text buttonTxt;
     Image buttonImage;
@@ -15,8 +15,8 @@ public class IDView_State : MonoBehaviour
 
     private void OnEnable()
     {
-        IDCam = GameObject.Find("IDCam").GetComponent<CinemachineVirtualCamera>();
-        CamOnID = GameObject.Find("screen_ID").GetComponent<CinemachineVirtualCamera>();
+        rightScreenCam = GameObject.Find("RightScreenCam").GetComponent<CinemachineVirtualCamera>();
+        ID_Cam = GameObject.Find("ID_Cam").GetComponent<CinemachineVirtualCamera>();
 
         buttonImage = GameObject.Find("button_crewMember_screen_view").GetComponent<Image>();
         buttonTxt = GameObject.Find("button_crewMember_screen_view").GetComponentInChildren<Text>();
@@ -34,21 +34,20 @@ public class IDView_State : MonoBehaviour
 
         screenDisplayedButtonTxt.text = "Check crew member's health information";
 
-        if (IDCam.Priority < 1)
-            IDCam.Priority = 1;
+        rightScreenCam.Priority = 1;
 
-        if (CamOnID.Priority < 1)
-            CamOnID.Priority = 1;
+        ID_Cam.Priority = 1;
     }
 
     private void OnDisable()
     {
-        CamOnID.Priority = 0;
+        ID_Cam.Priority = 0;
 
         if (GameManager._GAME_STATE != GameManager.eGameState.HealthInformationView)
         {
-            screenDisplayedButtonTxt.enabled = false;
-            screenDisplayedButtonImg.enabled = false;
+            rightScreenCam.Priority = 0;
+            if(screenDisplayedButtonTxt)    screenDisplayedButtonTxt.enabled = false;
+            if (screenDisplayedButtonImg)   screenDisplayedButtonImg.enabled = false;
             GameManager._LAST_SCREEN_STATE = GameManager.eGameState.IDView;
         }
     }

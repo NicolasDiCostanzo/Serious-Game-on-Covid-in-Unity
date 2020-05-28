@@ -13,7 +13,7 @@ public class Desk_State : MonoBehaviour
     {
         buttonRightScreenTxt = GameObject.Find("button_crewMember_screen_view").GetComponentInChildren<Text>();
         buttonLeftScreenTxt = GameObject.Find("button_to_ship_screen").GetComponentInChildren<Text>();
-        DeskCam = GameObject.Find("DeskCam").GetComponent<CinemachineVirtualCamera>();
+        DeskCam = GameObject.Find("DeskViewCam").GetComponent<CinemachineVirtualCamera>();
 
         DeskCam.Priority = 1;
         buttonRightScreenTxt.text = "Look at crew member's information";
