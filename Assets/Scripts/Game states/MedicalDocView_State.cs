@@ -39,8 +39,8 @@ public class MedicalDocView_State : MonoBehaviour
         if (GameManager._GAME_STATE != GameManager.eGameState.IDView)
         {
             rightScreenCam.Priority = 0;
-            screenDisplayedButtonTxt.enabled = false;
-            screenDisplayedButtonImg.enabled = false;
+            if (screenDisplayedButtonTxt.enabled) screenDisplayedButtonTxt.enabled = false;
+            if (screenDisplayedButtonImg.enabled) screenDisplayedButtonImg.enabled = false;
             GameManager._LAST_SCREEN_STATE = GameManager.eGameState.HealthInformationView;
         }
     }
