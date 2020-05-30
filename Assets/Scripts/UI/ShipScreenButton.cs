@@ -6,6 +6,7 @@ public class ShipScreenButton : MonoBehaviour
 {
     Renderer texture;
     Color startColor;
+    [SerializeField] GameObject panelToDisplay;
     private void Start()
     {
         texture = GetComponent<Renderer>();
@@ -21,9 +22,13 @@ public class ShipScreenButton : MonoBehaviour
         texture.material.color = startColor;
     }
 
+    [SerializeField] GameObject raycastBlocker;
+
     private void OnMouseDown()
     {
+        raycastBlocker.SetActive(true);
         texture.material.color = Color.black;
+        panelToDisplay.SetActive(true);
     }
 
     private void OnMouseUp()

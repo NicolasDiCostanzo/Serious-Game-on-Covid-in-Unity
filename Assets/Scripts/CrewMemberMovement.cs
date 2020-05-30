@@ -44,6 +44,8 @@ public class CrewMemberMovement : MonoBehaviour
             if (crossingPointToReach == 1 || crossingPointToReach == nbOfCrossingPoints - 1)
             {
                 hasToMove = false;
+
+                if (crossingPointToReach == 1) GameManager._GAME_STATE = GameManager.eGameState.DeskWithPatient;
             }
             else
             {
