@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -14,8 +16,13 @@ public class GameManager : MonoBehaviour
     ShipScreen_State shipScreenState_Script;
     IDView_State idViewState_Script;
     DeskWithoutPatient_State deskWithoutPatient_Script;
+    CrewMemberMovement crewMember_Script;
 
-    int currentPatient = 0;
+    static public List<CrewMemberMovement> Earth = new List<CrewMemberMovement>();
+    static public List<CrewMemberMovement> Station = new List<CrewMemberMovement>();
+    static public List<CrewMemberMovement> Mission = new List<CrewMemberMovement>();
+
+    static public int currentPatient = 0;
 
     [System.Flags]
     public enum eGameState
@@ -27,7 +34,12 @@ public class GameManager : MonoBehaviour
         ShipView
     }
 
-
+    public enum ePatientState
+    {
+        Covid,
+        OtherDisease,
+        Healthy
+    }
 
     public static GameManager GmInstance
     {
@@ -50,10 +62,20 @@ public class GameManager : MonoBehaviour
         medicViewState_Script = GetComponent<MedicalDocView_State>();
         shipScreenState_Script = GetComponent<ShipScreen_State>();
         idViewState_Script = GetComponent<IDView_State>();
+        crewMember_Script = GameObject.Find("crew member 1").GetComponent<CrewMemberMovement>();
     }
 
     void Update()
     {
+
+        //for (int i = 0; i < Earth.Count; i++)
+        //{
+        //    if(Earth[i].patientState.ToString() == "Covid")
+        //    {
+        //        Debug.Log("die");
+        //    }
+        //}
+
         switch (_GAME_STATE)
         {
             case eGameState.DeskWithoutPatient:
@@ -96,7 +118,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        Debug.Log(_GAME_STATE);
+       // Debug.Log(_GAME_STATE);
     }
     public void Switch_No_Patient_To_Patient()
     {

@@ -11,6 +11,16 @@ public class CrewMemberMovement : MonoBehaviour
     int nbOfCrossingPoints;
     public bool hasToMove;
 
+    [System.Flags]
+    public enum ePatientState
+    {
+        Covid,
+        OtherDisease,
+        Healthy
+    }
+
+    public ePatientState patientState;
+
     void OnEnable()
     {
         hasToMove = true;
@@ -43,7 +53,6 @@ public class CrewMemberMovement : MonoBehaviour
         {
             if (crossingPointToReach == 1 || crossingPointToReach == nbOfCrossingPoints - 1)
             {
-                Debug.Log("has to move <- false");
                 hasToMove = false;
 
                 if (crossingPointToReach == 1) GameManager._GAME_STATE = GameManager.eGameState.DeskWithPatient;

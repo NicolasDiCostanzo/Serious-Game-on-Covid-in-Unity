@@ -20,6 +20,6 @@ public class ShipScreen_State : MonoBehaviour
     private void OnDisable()
     {
         ShipScreenCam.Priority = 0;
-        buttonLeftScreenTxt.text = "Make a decision";
+        if(buttonLeftScreenTxt.enabled) buttonLeftScreenTxt.text = "Make a decision";
     }
 }
