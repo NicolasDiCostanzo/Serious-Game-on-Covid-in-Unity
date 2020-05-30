@@ -4,25 +4,29 @@ using Cinemachine;
 
 public class Desk_State : MonoBehaviour
 {
-    Text buttonRightScreenTxt;
-    Text buttonLeftScreenTxt;
+    GameObject buttonRightScreen;
+    GameObject buttonLeftScreen;
 
     CinemachineVirtualCamera DeskCam;
 
     private void OnEnable()
     {
-        buttonRightScreenTxt = GameObject.Find("button_crewMember_screen_view").GetComponentInChildren<Text>();
-        buttonLeftScreenTxt = GameObject.Find("button_to_ship_screen").GetComponentInChildren<Text>();
+        buttonRightScreen = GameObject.Find("button_crewMember_screen_view");
+        buttonLeftScreen = GameObject.Find("button_to_ship_screen");
         DeskCam = GameObject.Find("DeskViewCam").GetComponent<CinemachineVirtualCamera>();
 
-        DeskCam.Priority = 1;
-        buttonRightScreenTxt.text = "Look at crew member's information";
-        buttonLeftScreenTxt.text = "Make a decision";
+        if(DeskCam.Priority <1) DeskCam.Priority = 1;
+
+        GameManager.ActiveButton(buttonLeftScreen);
+        GameManager.ActiveButton(buttonRightScreen);
+
+        GameManager.ChangeButtonTxt(buttonRightScreen, "Look at crew member's information");
+        GameManager.ChangeButtonTxt(buttonLeftScreen, "Make a decision");
     }
 
     private void OnDisable()
     {
         DeskCam.Priority = 0;
-        if(GameManager._GAME_STATE == GameManager.eGameState.ShipView) buttonRightScreenTxt.text = "Look at crew member's information";
+        if(GameManager._GAME_STATE == GameManager.eGameState.ShipView) GameManager.ChangeButtonTxt(buttonRightScreen, "Look at crew member's information");
     }
 }

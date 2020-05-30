@@ -5,6 +5,7 @@ public class CrewMemberMovement : MonoBehaviour
 {
     List<Vector3> movingPoints = new List<Vector3>();
     [SerializeField] float speed;
+    SwitchBetweenCrewMemberInformation switchBetwInfo_Script;
 
     int crossingPointToReach = 0;
     int nbOfCrossingPoints;
@@ -15,6 +16,8 @@ public class CrewMemberMovement : MonoBehaviour
         hasToMove = true;
         GameObject crossingPointsParent = GameObject.Find("Crossing points");
         nbOfCrossingPoints = crossingPointsParent.transform.childCount;
+
+        switchBetwInfo_Script = GameObject.Find("Crew member information Manager").GetComponent<SwitchBetweenCrewMemberInformation>();
 
         for (int i = 0; i < nbOfCrossingPoints; i++)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwitchBetweenCrewMemberInformation : MonoBehaviour
 {
     CrewMemberInformation crewMemberDataScript;
-    int currentCM; //Numéro du membre d'équipage actuellement traîté
+    public int currentCM; //Numéro du membre d'équipage actuellement traîté
 
     List<GameObject> IDInformation = new List<GameObject>();
     int nbOfID_info;
@@ -42,8 +42,6 @@ public class SwitchBetweenCrewMemberInformation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) currentCM++;
-
         //UPDATE INFO ID
         //IDInformation[0].GetComponent<TextMeshProUGUI>().text = crewMemberDataScript.crewMemberIDData[currentCM].first_name; //!!!!!!!!!!!!!!!!!!!!!!!!IMAGE
         IDInformation[1].GetComponent<TextMeshProUGUI>().text = crewMemberDataScript.crewMemberIDData[currentCM].first_name;
