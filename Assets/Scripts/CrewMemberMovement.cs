@@ -9,7 +9,7 @@ public class CrewMemberMovement : MonoBehaviour
 
     int crossingPointToReach = 0;
     int nbOfCrossingPoints;
-    bool hasToMove;
+    public bool hasToMove;
 
     void OnEnable()
     {
@@ -43,6 +43,7 @@ public class CrewMemberMovement : MonoBehaviour
         {
             if (crossingPointToReach == 1 || crossingPointToReach == nbOfCrossingPoints - 1)
             {
+                Debug.Log("has to move <- false");
                 hasToMove = false;
 
                 if (crossingPointToReach == 1) GameManager._GAME_STATE = GameManager.eGameState.DeskWithPatient;

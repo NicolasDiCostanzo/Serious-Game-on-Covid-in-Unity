@@ -103,6 +103,11 @@ public class GameManager : MonoBehaviour
         _GAME_STATE = eGameState.DeskWithPatient;
     }
 
+    public void Switch_No_Patient()
+    {
+        _GAME_STATE = eGameState.DeskWithoutPatient;
+    }
+
     public void Switch_Desk_RightScreenView()
     {
         if (_GAME_STATE == eGameState.IDView || _GAME_STATE == eGameState.HealthInformationView)
@@ -148,7 +153,7 @@ public class GameManager : MonoBehaviour
     public void SendBackPatient()
     {
         GameObject patientParent = GameObject.Find("Crew members");
-        patientParent.transform.GetChild(currentPatient).GetComponent<CrewMemberMovement>().enabled = true;
+        patientParent.transform.GetChild(currentPatient).GetComponent<CrewMemberMovement>().SendBack();
         currentPatient++;
     }
 
