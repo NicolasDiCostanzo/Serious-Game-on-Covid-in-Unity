@@ -13,19 +13,21 @@ public class yes_no_btn_managment : MonoBehaviour
 
     public void SendToDestination()
     {
-        GameObject crewToAdd = GameObject.Find("Crew members").transform.GetChild(GameManager.currentPatient - 1).gameObject;
-        Debug.Log(crewToAdd.name);
+        GameObject patientParent = GameObject.Find("Crew members");
+
+        if (GameManager.currentPatient < patientParent.transform.childCount)
+            GameManager.currentPatient++;
 
         switch (transform.name)
         {
             case "Earth":
-                GameManager.Earth.Add(crewToAdd.GetComponent<CrewMemberMovement>());
+                GameManager.Earth.Add(GameManager.currentPatient_go.GetComponent<CrewMemberMovement>());
                 break;
             case "Station":
-                GameManager.Station.Add(crewToAdd.GetComponent<CrewMemberMovement>());
+                GameManager.Station.Add(GameManager.currentPatient_go.GetComponent<CrewMemberMovement>());
                 break;
             case "Mission":
-                GameManager.Mission.Add(crewToAdd.GetComponent<CrewMemberMovement>());
+                GameManager.Mission.Add(GameManager.currentPatient_go.GetComponent<CrewMemberMovement>());
                 break;
         }
     }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,12 +16,18 @@ public class GameManager : MonoBehaviour
     IDView_State idViewState_Script;
     DeskWithoutPatient_State deskWithoutPatient_Script;
     CrewMemberMovement crewMember_Script;
+    End_State endState_Script;
+    Result_state resultState_Script;
 
     static public List<CrewMemberMovement> Earth = new List<CrewMemberMovement>();
     static public List<CrewMemberMovement> Station = new List<CrewMemberMovement>();
     static public List<CrewMemberMovement> Mission = new List<CrewMemberMovement>();
 
     static public int currentPatient = 0;
+
+    static public GameObject endPanel;
+    static public GameObject resultPanel;
+    static public GameObject currentPatient_go;
 
     [System.Flags]
     public enum eGameState
@@ -31,7 +36,9 @@ public class GameManager : MonoBehaviour
         DeskWithPatient,
         IDView,
         HealthInformationView,
-        ShipView
+        ShipView,
+        End,
+        Result
     }
 
     public enum ePatientState
@@ -62,19 +69,28 @@ public class GameManager : MonoBehaviour
         medicViewState_Script = GetComponent<MedicalDocView_State>();
         shipScreenState_Script = GetComponent<ShipScreen_State>();
         idViewState_Script = GetComponent<IDView_State>();
+        endState_Script = GetComponent<End_State>();
+        resultState_Script = GetComponent<Result_state>();
+
         crewMember_Script = GameObject.Find("crew member 1").GetComponent<CrewMemberMovement>();
+
+        endPanel = GameObject.Find("End panel");
+        endPanel.SetActive(false);
+
+        resultPanel = GameObject.Find("ResultPanel");
+        resultPanel.SetActive(false);
     }
 
     void Update()
     {
 
-        //for (int i = 0; i < Earth.Count; i++)
-        //{
-        //    if(Earth[i].patientState.ToString() == "Covid")
-        //    {
-        //        Debug.Log("die");
-        //    }
-        //}
+        for (int i = 0; i < Earth.Count; i++)
+        {
+            if (Earth[i].patientState.ToString() == "Covid")
+            {
+                Debug.Log("die");
+            }
+        }
 
         switch (_GAME_STATE)
         {
@@ -84,6 +100,8 @@ public class GameManager : MonoBehaviour
                 medicViewState_Script.enabled = false;
                 idViewState_Script.enabled = false;
                 shipScreenState_Script.enabled = false;
+                endState_Script.enabled = false;
+                resultState_Script.enabled = false;
                 break;
 
             case eGameState.DeskWithPatient:
@@ -92,6 +110,8 @@ public class GameManager : MonoBehaviour
                 medicViewState_Script.enabled = false;
                 idViewState_Script.enabled = false;
                 shipScreenState_Script.enabled = false;
+                endState_Script.enabled = false;
+                resultState_Script.enabled = false;
                 break;
             case eGameState.HealthInformationView:
                 deskWithoutPatient_Script.enabled = false;
@@ -99,6 +119,8 @@ public class GameManager : MonoBehaviour
                 medicViewState_Script.enabled = true;
                 idViewState_Script.enabled = false;
                 shipScreenState_Script.enabled = false;
+                endState_Script.enabled = false;
+                resultState_Script.enabled = false;
                 break;
 
             case eGameState.IDView:
@@ -107,6 +129,8 @@ public class GameManager : MonoBehaviour
                 medicViewState_Script.enabled = false;
                 idViewState_Script.enabled = true;
                 shipScreenState_Script.enabled = false;
+                endState_Script.enabled = false;
+                resultState_Script.enabled = false;
                 break;
 
             case eGameState.ShipView:
@@ -115,19 +139,54 @@ public class GameManager : MonoBehaviour
                 medicViewState_Script.enabled = false;
                 idViewState_Script.enabled = false;
                 shipScreenState_Script.enabled = true;
+                endState_Script.enabled = false;
+                resultState_Script.enabled = false;
+                break;
+
+            case eGameState.End:
+                deskWithoutPatient_Script.enabled = false;
+                deskWithPatient_Script.enabled = false;
+                medicViewState_Script.enabled = false;
+                idViewState_Script.enabled = false;
+                shipScreenState_Script.enabled = false;
+                endState_Script.enabled = true;
+                resultState_Script.enabled = false;
+                break;
+
+            case eGameState.Result:
+                deskWithoutPatient_Script.enabled = false;
+                deskWithPatient_Script.enabled = false;
+                medicViewState_Script.enabled = false;
+                idViewState_Script.enabled = false;
+                shipScreenState_Script.enabled = false;
+                endState_Script.enabled = false;
+                resultState_Script.enabled = true;
                 break;
         }
 
-       // Debug.Log(_GAME_STATE);
+        // Debug.Log(_GAME_STATE);
     }
     public void Switch_No_Patient_To_Patient()
     {
         _GAME_STATE = eGameState.DeskWithPatient;
     }
 
-    public void Switch_No_Patient()
+    public void Switch_State_After_Patient_State()
     {
-        _GAME_STATE = eGameState.DeskWithoutPatient;
+        GameObject patientParent = GameObject.Find("Crew members");
+
+        Debug.Log(currentPatient + "/" + patientParent.transform.childCount);
+        if (currentPatient + 1 < patientParent.transform.childCount)
+        {
+            _GAME_STATE = eGameState.DeskWithoutPatient;
+        }
+        else
+        {
+            _GAME_STATE = eGameState.End;
+        }
+
+        Debug.Log(_GAME_STATE);
+        currentPatient_go.GetComponent<CrewMemberMovement>().SendBack();
     }
 
     public void Switch_Desk_RightScreenView()
@@ -166,17 +225,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Result_State()
+    {
+        _GAME_STATE = eGameState.Result;
+    }
+
     public void CallNewPatient()
     {
         GameObject patientParent = GameObject.Find("Crew members");
-        patientParent.transform.GetChild(currentPatient).GetComponent<CrewMemberMovement>().enabled = true;
+        if (currentPatient <= patientParent.transform.childCount)
+        {
+            currentPatient_go = patientParent.transform.GetChild(currentPatient).gameObject;
+            currentPatient_go.GetComponent<CrewMemberMovement>().enabled = true;
+            Debug.Log(currentPatient_go.name);
+        }
+        else
+        {
+            _GAME_STATE = eGameState.End;
+        }
     }
 
     public void SendBackPatient()
     {
         GameObject patientParent = GameObject.Find("Crew members");
-        patientParent.transform.GetChild(currentPatient).GetComponent<CrewMemberMovement>().SendBack();
-        currentPatient++;
+        currentPatient_go.GetComponent<CrewMemberMovement>().SendBack();
+
+
+
     }
 
     static public void ActiveButton(GameObject button)
