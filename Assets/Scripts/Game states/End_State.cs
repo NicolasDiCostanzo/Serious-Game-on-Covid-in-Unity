@@ -14,6 +14,9 @@ public class End_State : MonoBehaviour
         DeskCam = GameObject.Find("DeskViewCam").GetComponent<CinemachineVirtualCamera>();
 
         if (DeskCam.Priority < 1) DeskCam.Priority = 1;
+
+        GameManager.DeactiveButton(GameObject.Find("button_to_ship_screen"));
+        GameManager.DeactiveButton(GameObject.Find("button_crewMember_screen_view"));
     }
 
     private void OnDisable()
