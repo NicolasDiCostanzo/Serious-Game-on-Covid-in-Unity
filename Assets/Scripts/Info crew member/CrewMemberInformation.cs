@@ -44,26 +44,26 @@ public class CrewMemberInformation : MonoBehaviour
         crewMemberIDData[0].symptom2 =      "test symptome2";
 
 
-        //crewMemberIDData[1].img =         img2;
-        crewMemberIDData[1].first_name =    "bsalut";
-        crewMemberIDData[1].last_name =     "bca va ?";
-        crewMemberIDData[1].sex =           "F";
-        crewMemberIDData[1].birth_date =    "07/11/1995";
-        crewMemberIDData[1].birth_place =   "Babrespine";
-        crewMemberIDData[1].weight =        72;
-        crewMemberIDData[1].size =          182;
+        ////crewMemberIDData[1].img =         img2;
+        //crewMemberIDData[1].first_name =    "bsalut";
+        //crewMemberIDData[1].last_name =     "bca va ?";
+        //crewMemberIDData[1].sex =           "F";
+        //crewMemberIDData[1].birth_date =    "07/11/1995";
+        //crewMemberIDData[1].birth_place =   "Babrespine";
+        //crewMemberIDData[1].weight =        72;
+        //crewMemberIDData[1].size =          182;
 
-        crewMemberIDData[1].symptom1 =      "test symptome23456";
-        crewMemberIDData[1].symptom2 =      "test symptome666";
+        //crewMemberIDData[1].symptom1 =      "test symptome23456";
+        //crewMemberIDData[1].symptom2 =      "test symptome666";
 
 
-        //crewMemberIDData[2].img =         img3;
-        crewMemberIDData[2].first_name =    "csalut";
-        crewMemberIDData[2].last_name =     "cca va ?";
-        crewMemberIDData[2].sex =           "M";
-        crewMemberIDData[2].birth_date =    "08/11/1956";
-        crewMemberIDData[2].birth_place =   "Dabrespine";
-        crewMemberIDData[2].weight =        73;
-        crewMemberIDData[2].size =          183;
+        ////crewMemberIDData[2].img =         img3;
+        //crewMemberIDData[2].first_name =    "csalut";
+        //crewMemberIDData[2].last_name =     "cca va ?";
+        //crewMemberIDData[2].sex =           "M";
+        //crewMemberIDData[2].birth_date =    "08/11/1956";
+        //crewMemberIDData[2].birth_place =   "Dabrespine";
+        //crewMemberIDData[2].weight =        73;
+        //crewMemberIDData[2].size =          183;
     }
 }

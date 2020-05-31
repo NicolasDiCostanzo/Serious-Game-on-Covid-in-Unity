@@ -1,23 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 
 public class ProgressBarManager : MonoBehaviour
 {
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space)) cureProgression(.1f);
-    //}
+    public int prctToAddToResearch;
+    [SerializeField] TextMeshProUGUI txtToUpdate;
+    bool active;
 
-    public void cureProgression(float v)
+    private void Update()
     {
-        if (transform.localScale.y + v >= 1)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z); ;
+            cureProgression();
         }
-        else
+
+        if (active)
         {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y + v, transform.localScale.z); ;
+            if (transform.GetChild(0).localScale.y < ((float)prctToAddToResearch / 100))
+            {
+                if (transform.GetChild(0).localScale.y >= 1)
+                {
+                    transform.GetChild(0).localScale = new Vector3(transform.GetChild(0).localScale.x, 1, transform.GetChild(0).localScale.z); ;
+                }
+                else
+                {
+                    transform.GetChild(0).localScale = new Vector3(transform.GetChild(0).localScale.x, transform.GetChild(0).localScale.y + Time.deltaTime / 5, transform.GetChild(0).localScale.z); ;
+                }
+
+                txtToUpdate.text = Mathf.Round(transform.GetChild(0).localScale.y * 100).ToString() + "%";
+            }
         }
+
+    }
+
+    public void cureProgression()
+    {
+        active = true;
     }
 }
