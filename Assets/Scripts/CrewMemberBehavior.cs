@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CrewMemberMovement : MonoBehaviour
+public class CrewMemberBehavior : MonoBehaviour
 {
     List<Vector3> movingPoints = new List<Vector3>();
     [SerializeField] float speed;
-    SwitchBetweenCrewMemberInformation switchBetwInfo_Script;
+    //SwitchBetweenCrewMemberInformation switchBetwInfo_Script;
 
     int crossingPointToReach = 0;
     int nbOfCrossingPoints;
     public bool hasToMove;
 
-    [System.Flags]
     public enum ePatientState
     {
         Covid,
@@ -27,7 +26,7 @@ public class CrewMemberMovement : MonoBehaviour
         GameObject crossingPointsParent = GameObject.Find("Crossing points");
         nbOfCrossingPoints = crossingPointsParent.transform.childCount;
 
-        switchBetwInfo_Script = GameObject.Find("Crew member information Manager").GetComponent<SwitchBetweenCrewMemberInformation>();
+        //switchBetwInfo_Script = GameObject.Find("Crew member information Manager").GetComponent<SwitchBetweenCrewMemberInformation>();
 
         for (int i = 0; i < nbOfCrossingPoints; i++)
         {

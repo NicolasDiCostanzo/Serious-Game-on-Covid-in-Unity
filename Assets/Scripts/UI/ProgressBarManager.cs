@@ -3,21 +3,14 @@ using UnityEngine;
 
 public class ProgressBarManager : MonoBehaviour
 {
-    [Tooltip("Int")]
-    public int prctToAddToResearch;
+    [HideInInspector] public int prctToAddToResearch;
     [SerializeField] TextMeshProUGUI txtToUpdate;
     bool active;
     bool stopAnim;
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    cureProgression();
-        //}
-
         if (GameManager._GAME_STATE == GameManager.eGameState.Result && !active) GetComponent<Animator>().enabled = true;
-        Debug.Log(active);
 
         if (active)
         {

@@ -21,13 +21,13 @@ public class yes_no_btn_managment : MonoBehaviour
         switch (transform.name)
         {
             case "Earth":
-                GameManager.Earth.Add(GameManager.currentPatient_go.GetComponent<CrewMemberMovement>());
+                GameManager.Earth.Add(GameManager.currentPatient_go.GetComponent<CrewMemberBehavior>());
                 break;
             case "Station":
-                GameManager.Station.Add(GameManager.currentPatient_go.GetComponent<CrewMemberMovement>());
+                GameManager.Station.Add(GameManager.currentPatient_go.GetComponent<CrewMemberBehavior>());
                 break;
             case "Mission":
-                GameManager.Mission.Add(GameManager.currentPatient_go.GetComponent<CrewMemberMovement>());
+                GameManager.Mission.Add(GameManager.currentPatient_go.GetComponent<CrewMemberBehavior>());
                 break;
         }
     }

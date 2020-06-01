@@ -15,13 +15,13 @@ public class GameManager : MonoBehaviour
     ShipScreen_State shipScreenState_Script;
     IDView_State idViewState_Script;
     DeskWithoutPatient_State deskWithoutPatient_Script;
-    CrewMemberMovement crewMember_Script;
+    CrewMemberBehavior crewMember_Script;
     End_State endState_Script;
     Result_state resultState_Script;
 
-    static public List<CrewMemberMovement> Earth = new List<CrewMemberMovement>();
-    static public List<CrewMemberMovement> Station = new List<CrewMemberMovement>();
-    static public List<CrewMemberMovement> Mission = new List<CrewMemberMovement>();
+    static public List<CrewMemberBehavior> Earth = new List<CrewMemberBehavior>();
+    static public List<CrewMemberBehavior> Station = new List<CrewMemberBehavior>();
+    static public List<CrewMemberBehavior> Mission = new List<CrewMemberBehavior>();
 
     static public int currentPatient = 0;
 
@@ -61,8 +61,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        _GAME_STATE = eGameState.DeskWithoutPatient;
+
         _gmInstance = this;
-        _GAME_STATE = eGameState.End;
 
         deskWithoutPatient_Script = GetComponent<DeskWithoutPatient_State>();
         deskWithPatient_Script = GetComponent<Desk_State>();
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
         endState_Script = GetComponent<End_State>();
         resultState_Script = GetComponent<Result_state>();
 
-        crewMember_Script = GameObject.Find("crew member 1").GetComponent<CrewMemberMovement>();
+        crewMember_Script = GameObject.Find("crew member 1").GetComponent<CrewMemberBehavior>();
 
         endPanel = GameObject.Find("End panel");
         endPanel.SetActive(false);
@@ -84,13 +85,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        for (int i = 0; i < Earth.Count; i++)
-        {
-            if (Earth[i].patientState.ToString() == "Covid")
-            {
-                Debug.Log("die");
-            }
-        }
+        //for (int i = 0; i < Earth.Count; i++)
+        //{
+        //    if (Mission[i].patientState.ToString() == "Covid")
+        //    {
+        //        Debug.Log("die");
+        //    }
+        //}
 
         switch (_GAME_STATE)
         {
@@ -186,7 +187,7 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log(_GAME_STATE);
-        currentPatient_go.GetComponent<CrewMemberMovement>().SendBack();
+        currentPatient_go.GetComponent<CrewMemberBehavior>().SendBack();
     }
 
     public void Switch_Desk_RightScreenView()
@@ -233,10 +234,10 @@ public class GameManager : MonoBehaviour
     public void CallNewPatient()
     {
         GameObject patientParent = GameObject.Find("Crew members");
-        if (currentPatient <= patientParent.transform.childCount)
+        if (currentPatient < patientParent.transform.childCount)
         {
             currentPatient_go = patientParent.transform.GetChild(currentPatient).gameObject;
-            currentPatient_go.GetComponent<CrewMemberMovement>().enabled = true;
+            currentPatient_go.GetComponent<CrewMemberBehavior>().enabled = true;
             Debug.Log(currentPatient_go.name);
         }
         else
@@ -247,7 +248,7 @@ public class GameManager : MonoBehaviour
 
     public void SendBackPatient()
     {
-        currentPatient_go.GetComponent<CrewMemberMovement>().SendBack();
+        currentPatient_go.GetComponent<CrewMemberBehavior>().SendBack();
     }
 
     static public void ActiveButton(GameObject button)
