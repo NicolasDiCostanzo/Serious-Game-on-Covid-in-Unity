@@ -3,16 +3,21 @@ using UnityEngine;
 
 public class ProgressBarManager : MonoBehaviour
 {
+    [Tooltip("Int")]
     public int prctToAddToResearch;
     [SerializeField] TextMeshProUGUI txtToUpdate;
     bool active;
+    bool stopAnim;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            cureProgression();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    cureProgression();
+        //}
+
+        if (GameManager._GAME_STATE == GameManager.eGameState.Result && !active) GetComponent<Animator>().enabled = true;
+        Debug.Log(active);
 
         if (active)
         {
@@ -20,7 +25,7 @@ public class ProgressBarManager : MonoBehaviour
             {
                 if (transform.GetChild(0).localScale.y >= 1)
                 {
-                    transform.GetChild(0).localScale = new Vector3(transform.GetChild(0).localScale.x, 1, transform.GetChild(0).localScale.z); ;
+                    transform.GetChild(0).localScale = new Vector3(transform.GetChild(0).localScale.x, 1, transform.GetChild(0).localScale.z);
                 }
                 else
                 {
@@ -29,12 +34,16 @@ public class ProgressBarManager : MonoBehaviour
 
                 txtToUpdate.text = Mathf.Round(transform.GetChild(0).localScale.y * 100).ToString() + "%";
             }
+            else
+            {
+                GetComponent<Animator>().enabled = true;
+            }
         }
-
     }
 
     public void cureProgression()
     {
         active = true;
+        GetComponent<Animator>().enabled = false;
     }
 }

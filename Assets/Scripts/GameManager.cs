@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         _gmInstance = this;
-        _GAME_STATE = eGameState.DeskWithoutPatient;
+        _GAME_STATE = eGameState.End;
 
         deskWithoutPatient_Script = GetComponent<DeskWithoutPatient_State>();
         deskWithPatient_Script = GetComponent<Desk_State>();
@@ -247,11 +247,7 @@ public class GameManager : MonoBehaviour
 
     public void SendBackPatient()
     {
-        GameObject patientParent = GameObject.Find("Crew members");
         currentPatient_go.GetComponent<CrewMemberMovement>().SendBack();
-
-
-
     }
 
     static public void ActiveButton(GameObject button)
