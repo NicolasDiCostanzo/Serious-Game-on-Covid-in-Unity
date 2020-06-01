@@ -36,7 +36,7 @@ public class ProgressBarManager : MonoBehaviour
             }
             else
             {
-                GetComponent<Animator>().enabled = true;
+                GameManager.ActiveButton(GameObject.Find("res_Button"));
             }
         }
     }
