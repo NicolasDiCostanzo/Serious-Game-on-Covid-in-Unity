@@ -9,6 +9,9 @@ public class End_State : MonoBehaviour
     CinemachineVirtualCamera DeskCam;
     private void OnEnable()
     {
+        GameManager.currentLvl++;
+        GameManager.currentPatient = 0;
+
         GameManager.endPanel.SetActive(true);
 
         DeskCam = GameObject.Find("DeskViewCam").GetComponent<CinemachineVirtualCamera>();

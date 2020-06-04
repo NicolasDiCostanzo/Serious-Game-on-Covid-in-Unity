@@ -13,9 +13,7 @@ public class yes_no_btn_managment : MonoBehaviour
 
     public void SendToDestination()
     {
-        GameObject patientParent = GameObject.Find("Crew members");
-
-        if (GameManager.currentPatient < patientParent.transform.childCount)
+        if (GameManager.currentPatient < GameManager.patientParent.transform.childCount)
             GameManager.currentPatient++;
 
         switch (transform.name)

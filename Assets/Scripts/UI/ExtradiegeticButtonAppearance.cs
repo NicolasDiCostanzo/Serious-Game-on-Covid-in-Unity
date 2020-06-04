@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipScreenButton : MonoBehaviour
+public class ExtradiegeticButtonAppearance : MonoBehaviour
 {
     Renderer texture;
     Color startColor;
-    [SerializeField] GameObject panelToDisplay;
+
+    [SerializeField] Color mouseOnColor;
+    [SerializeField] Color mouseDownColor;
     private void Start()
     {
         texture = GetComponent<Renderer>();
@@ -14,7 +16,7 @@ public class ShipScreenButton : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        texture.material.color = Color.grey;
+        texture.material.color = mouseOnColor;
     }
 
     private void OnMouseExit()
@@ -22,13 +24,9 @@ public class ShipScreenButton : MonoBehaviour
         texture.material.color = startColor;
     }
 
-    [SerializeField] GameObject raycastBlocker;
-
     private void OnMouseDown()
     {
-        raycastBlocker.SetActive(true);
-        texture.material.color = Color.black;
-        panelToDisplay.SetActive(true);
+        texture.material.color = mouseDownColor;
     }
 
     private void OnMouseUp()

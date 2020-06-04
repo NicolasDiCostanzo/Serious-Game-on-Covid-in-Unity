@@ -19,12 +19,33 @@ public class Result_state : MonoBehaviour
         GameManager.resultPanel.SetActive(true);
         GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = true;
         progressBar_Script = GameObject.Find("Cure progression").GetComponent<ProgressBarManager>();
-
         ResultCalculation();
     }
     private void OnDisable()
     {
+        GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = false;
         GameManager.resultPanel.SetActive(false);
+
+        /*result_Script.*/
+        toEarth_Covid = 0;
+        /*result_Script.*/
+        toEarth_Disease = 0;
+        /*result_Script.*/
+        toEarth_Healthy = 0;
+        /*result_Script.*/
+        toStation_Covid = 0;
+        /*result_Script.*/
+        toStation_Disease = 0;
+        /*result_Script.*/
+        toStation_Healthy = 0;
+        /*result_Script.*/
+        toMission_Covid = 0;
+        /*result_Script.*/
+        toMission_Disease = 0;
+        /*result_Script.*/
+        toMission_Healthy = 0;
+        /*result_Script.*/
+        toMission_Total = 0;
     }
 
     void ResultCalculation()

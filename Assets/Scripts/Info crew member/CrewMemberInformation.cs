@@ -16,7 +16,7 @@ public class CrewMemberInformation : MonoBehaviour
 
     void Start()
     {
-        nbOfCrewMember = GameObject.Find("Crew members").transform.childCount;
+        nbOfCrewMember = GameObject.Find("Lvl 1").transform.childCount;
         crewMemberIDData = new CrewMemberID[nbOfCrewMember];
 
         GenData();
@@ -40,7 +40,7 @@ public class CrewMemberInformation : MonoBehaviour
         crewMemberIDData[0].weight =        70;
         crewMemberIDData[0].size =          180;
 
-        crewMemberIDData[0].symptom1 =      "test symptome";
+        crewMemberIDData[0].symptom1 =      "test symptome1";
         crewMemberIDData[0].symptom2 =      "test symptome2";
 
 
