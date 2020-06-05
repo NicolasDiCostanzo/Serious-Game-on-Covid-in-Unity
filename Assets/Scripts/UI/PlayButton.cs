@@ -6,6 +6,13 @@ public class PlayButton : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        GameManager.StartGame();
+        if (!GameManager.tutoHasBeenShown)
+        {
+            GameManager.StoryState();
+        }
+        else
+        {
+            GameManager._GAME_STATE = GameManager.eGameState.DeskWithoutPatient;
+        }
     }
 }

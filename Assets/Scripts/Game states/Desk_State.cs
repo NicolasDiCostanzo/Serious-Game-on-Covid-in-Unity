@@ -27,6 +27,6 @@ public class Desk_State : MonoBehaviour
     private void OnDisable()
     {
         DeskCam.Priority = 0;
-        if(GameManager._GAME_STATE == GameManager.eGameState.ShipView) GameManager.ChangeButtonTxt(buttonRightScreen, "Look at crew member's information");
+        if(GameManager._GAME_STATE == GameManager.eGameState.DecisionView) GameManager.ChangeButtonTxt(buttonRightScreen, "Look at crew member's information");
     }
 }

@@ -6,7 +6,6 @@ using Cinemachine;
 public class MainMenu_state : MonoBehaviour
 {
     CinemachineVirtualCamera camOnMainMenu;
-    // Start is called before the first frame update
 
     private void OnEnable()
     {
@@ -15,11 +14,11 @@ public class MainMenu_state : MonoBehaviour
         GameManager.DeactiveButton(GameObject.Find("button_crewMember_screen_view"));
         GameManager.DeactiveButton(GameObject.Find("button_to_ship_screen"));
         GameManager.DeactiveButton(GameObject.Find("callPatientButton"));
-
+        GameManager.storyPanel.SetActive(false);
     }
 
     private void OnDisable()
     {
-        camOnMainMenu.Priority = 0;
+        if(GameManager._GAME_STATE != GameManager.eGameState.Story) camOnMainMenu.Priority = 0;
     }
 }

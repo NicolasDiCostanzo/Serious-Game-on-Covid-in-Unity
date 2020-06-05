@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     static public GameObject endPanel;
     static public GameObject resultPanel;
     static public GameObject currentPatient_go;
+    static public GameObject storyPanel;
+    static public bool tutoHasBeenShown = false;
 
     static public int currentLvl = 1;
 
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
         DeskWithPatient,
         IDView,
         HealthInformationView,
-        ShipView,
+        DecisionView,
         End,
         Result,
     }
@@ -68,6 +70,9 @@ public class GameManager : MonoBehaviour
 
         resultPanel = GameObject.Find("ResultPanel");
         resultPanel.SetActive(false);
+
+        storyPanel = GameObject.Find("StoryPanel");
+        storyPanel.SetActive(false);
     }
 
     void Update()
@@ -77,6 +82,14 @@ public class GameManager : MonoBehaviour
 
         switch (_GAME_STATE)
         {
+            case eGameState.MainMenu:
+                ActivateOneGameState("MainMenu_state");
+                break;
+
+            case eGameState.Story:
+                ActivateOneGameState("Story_State");
+                break;
+
             case eGameState.DeskWithoutPatient:
                 ActivateOneGameState("DeskWithoutPatient_State");
                 break;
@@ -85,15 +98,15 @@ public class GameManager : MonoBehaviour
                 ActivateOneGameState("Desk_State");
                 break;
 
-            case eGameState.HealthInformationView:
-                ActivateOneGameState("MedicalDocView_State");
-                break;
-
             case eGameState.IDView:
                 ActivateOneGameState("IDView_State");
                 break;
 
-            case eGameState.ShipView:
+            case eGameState.HealthInformationView:
+                ActivateOneGameState("MedicalDocView_State");
+                break;
+
+            case eGameState.DecisionView:
                 ActivateOneGameState("ShipScreen_State");
                 break;
 
@@ -105,9 +118,7 @@ public class GameManager : MonoBehaviour
                 ActivateOneGameState("Result_state");
                 break;
 
-            case eGameState.MainMenu:
-                ActivateOneGameState("MainMenu_state");
-                break;
+
         }
     }
 
@@ -132,7 +143,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void StartGame()
+    public void StartGame()
     {
         _GAME_STATE = eGameState.DeskWithoutPatient;
     }
@@ -140,6 +151,11 @@ public class GameManager : MonoBehaviour
     public void Switch_No_Patient_To_Patient()
     {
         _GAME_STATE = eGameState.DeskWithPatient;
+    }
+
+    public static void StoryState()
+    {
+        _GAME_STATE = eGameState.Story;
     }
 
     public void Switch_State_After_Patient_State()
@@ -184,9 +200,9 @@ public class GameManager : MonoBehaviour
 
     public void ShipView_State()
     {
-        if (_GAME_STATE != eGameState.ShipView)
+        if (_GAME_STATE != eGameState.DecisionView)
         {
-            _GAME_STATE = eGameState.ShipView;
+            _GAME_STATE = eGameState.DecisionView;
         }
         else
         {
@@ -206,7 +222,6 @@ public class GameManager : MonoBehaviour
         {
             currentPatient_go = patientParent.transform.GetChild(currentPatient).gameObject;
             currentPatient_go.GetComponent<CrewMemberBehavior>().enabled = true;
-            Debug.Log(currentPatient_go.name);
         }
         else
         {
