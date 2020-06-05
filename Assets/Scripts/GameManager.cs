@@ -10,15 +10,7 @@ public class GameManager : MonoBehaviour
     static public eGameState _GAME_STATE;
     static public eGameState _LAST_SCREEN_STATE = eGameState.IDView;
 
-    Desk_State deskWithPatient_Script;
-    MedicalDocView_State medicViewState_Script;
-    ShipScreen_State shipScreenState_Script;
-    IDView_State idViewState_Script;
-    DeskWithoutPatient_State deskWithoutPatient_Script;
-    CrewMemberBehavior crewMember_Script;
-    End_State endState_Script;
-    Result_state resultState_Script;
-    MainMenu_state mainMenuState_Script;
+
 
     static public List<CrewMemberBehavior> Earth = new List<CrewMemberBehavior>();
     static public List<CrewMemberBehavior> Station = new List<CrewMemberBehavior>();
@@ -36,6 +28,8 @@ public class GameManager : MonoBehaviour
     [System.Flags]
     public enum eGameState
     {
+        MainMenu,
+        Story,
         DeskWithoutPatient,
         DeskWithPatient,
         IDView,
@@ -43,7 +37,6 @@ public class GameManager : MonoBehaviour
         ShipView,
         End,
         Result,
-        MainMenu
     }
 
     public enum ePatientState
@@ -66,20 +59,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        _GAME_STATE = eGameState.DeskWithoutPatient;
+        _GAME_STATE = eGameState.MainMenu;
 
         _gmInstance = this;
-
-        deskWithoutPatient_Script = GetComponent<DeskWithoutPatient_State>();
-        deskWithPatient_Script = GetComponent<Desk_State>();
-        medicViewState_Script = GetComponent<MedicalDocView_State>();
-        shipScreenState_Script = GetComponent<ShipScreen_State>();
-        idViewState_Script = GetComponent<IDView_State>();
-        endState_Script = GetComponent<End_State>();
-        resultState_Script = GetComponent<Result_state>();
-        mainMenuState_Script = GetComponent<MainMenu_state>();
-
-        crewMember_Script = GameObject.Find("crew member 1").GetComponent<CrewMemberBehavior>();
 
         endPanel = GameObject.Find("End panel");
         endPanel.SetActive(false);
@@ -90,100 +72,66 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(_GAME_STATE);
+
+        // Debug.Log(_GAME_STATE);
 
         switch (_GAME_STATE)
         {
             case eGameState.DeskWithoutPatient:
-                deskWithoutPatient_Script.enabled = true;
-                deskWithPatient_Script.enabled = false;
-                medicViewState_Script.enabled = false;
-                idViewState_Script.enabled = false;
-                shipScreenState_Script.enabled = false;
-                endState_Script.enabled = false;
-                resultState_Script.enabled = false;
-                mainMenuState_Script.enabled = false;
+                ActivateOneGameState("DeskWithoutPatient_State");
                 break;
 
             case eGameState.DeskWithPatient:
-                deskWithoutPatient_Script.enabled = false;
-                deskWithPatient_Script.enabled = true;
-                medicViewState_Script.enabled = false;
-                idViewState_Script.enabled = false;
-                shipScreenState_Script.enabled = false;
-                endState_Script.enabled = false;
-                resultState_Script.enabled = false;
-                mainMenuState_Script.enabled = false;
+                ActivateOneGameState("Desk_State");
                 break;
+
             case eGameState.HealthInformationView:
-                deskWithoutPatient_Script.enabled = false;
-                deskWithPatient_Script.enabled = false;
-                medicViewState_Script.enabled = true;
-                idViewState_Script.enabled = false;
-                shipScreenState_Script.enabled = false;
-                endState_Script.enabled = false;
-                resultState_Script.enabled = false;
-                mainMenuState_Script.enabled = false;
+                ActivateOneGameState("MedicalDocView_State");
                 break;
 
             case eGameState.IDView:
-                deskWithoutPatient_Script.enabled = false;
-                deskWithPatient_Script.enabled = false;
-                medicViewState_Script.enabled = false;
-                idViewState_Script.enabled = true;
-                shipScreenState_Script.enabled = false;
-                endState_Script.enabled = false;
-                resultState_Script.enabled = false;
-                mainMenuState_Script.enabled = false;
+                ActivateOneGameState("IDView_State");
                 break;
 
             case eGameState.ShipView:
-                deskWithoutPatient_Script.enabled = false;
-                deskWithPatient_Script.enabled = false;
-                medicViewState_Script.enabled = false;
-                idViewState_Script.enabled = false;
-                shipScreenState_Script.enabled = true;
-                endState_Script.enabled = false;
-                resultState_Script.enabled = false;
-                mainMenuState_Script.enabled = false;
+                ActivateOneGameState("ShipScreen_State");
                 break;
 
             case eGameState.End:
-                deskWithoutPatient_Script.enabled = false;
-                deskWithPatient_Script.enabled = false;
-                medicViewState_Script.enabled = false;
-                idViewState_Script.enabled = false;
-                shipScreenState_Script.enabled = false;
-                endState_Script.enabled = true;
-                resultState_Script.enabled = false;
+                ActivateOneGameState("End_State");
                 break;
 
             case eGameState.Result:
-                deskWithoutPatient_Script.enabled = false;
-                deskWithPatient_Script.enabled = false;
-                medicViewState_Script.enabled = false;
-                idViewState_Script.enabled = false;
-                shipScreenState_Script.enabled = false;
-                endState_Script.enabled = false;
-                resultState_Script.enabled = true;
-                mainMenuState_Script.enabled = false;
+                ActivateOneGameState("Result_state");
                 break;
 
             case eGameState.MainMenu:
-                deskWithoutPatient_Script.enabled = false;
-                deskWithPatient_Script.enabled = false;
-                medicViewState_Script.enabled = false;
-                idViewState_Script.enabled = false;
-                shipScreenState_Script.enabled = false;
-                endState_Script.enabled = false;
-                resultState_Script.enabled = false;
-                mainMenuState_Script.enabled = true;
+                ActivateOneGameState("MainMenu_state");
                 break;
         }
-
-        // Debug.Log(_GAME_STATE);
     }
-    
+
+    void ActivateOneGameState(string scriptNameToLetActive)
+    {
+        MonoBehaviour[] states = GetComponents<MonoBehaviour>();
+
+        foreach (MonoBehaviour states_script in states)
+        {
+            string scriptName = states_script.GetType().Name;
+
+            if (string.Compare(scriptName, scriptNameToLetActive) != 0)
+            {
+                states_script.enabled = false;
+            }
+            else
+            {
+                states_script.enabled = true;
+            }
+
+            states[0].enabled = true;//Correspond au Game Manager qui doit être tout le temps actif
+        }
+    }
+
     public static void StartGame()
     {
         _GAME_STATE = eGameState.DeskWithoutPatient;
@@ -198,7 +146,6 @@ public class GameManager : MonoBehaviour
     {
         patientParent = GameObject.Find("Lvl " + currentLvl.ToString());
 
-        //Debug.Log(currentPatient + "/" + patientParent.transform.childCount);
         if (currentPatient + 1 < patientParent.transform.childCount)
         {
             _GAME_STATE = eGameState.DeskWithoutPatient;

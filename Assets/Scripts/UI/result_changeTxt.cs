@@ -19,10 +19,11 @@ public class result_changeTxt : MonoBehaviour
 
         if (panel1)
         {
-            memoriseFirstText = txt.text;
+            result_Script = GameObject.Find("Game Manager").GetComponent<Result_state>();
+
+            memoriseFirstText = txt.text;//on mémorise le texte du panel1 pour le réafficher quand on rappelle cet état
 
             progressBarManager_Script.active = false;
-            result_Script = GameObject.Find("Game Manager").GetComponent<Result_state>();
 
             txt.resizeTextForBestFit = true;
 
