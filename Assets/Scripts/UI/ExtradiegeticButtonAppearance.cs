@@ -6,6 +6,7 @@ public class ExtradiegeticButtonAppearance : MonoBehaviour
 {
     Renderer texture;
     Color startColor;
+    TutoManager tuto_script;
 
     [SerializeField] Color mouseOnColor;
     [SerializeField] Color mouseDownColor;
@@ -13,6 +14,7 @@ public class ExtradiegeticButtonAppearance : MonoBehaviour
     {
         texture = GetComponent<Renderer>();
         startColor = texture.material.color;
+        tuto_script = GameObject.Find("Tuto Manager").GetComponent<TutoManager>();
     }
     private void OnMouseEnter()
     {

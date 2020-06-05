@@ -218,6 +218,10 @@ public class GameManager : MonoBehaviour
     public void CallNewPatient()
     {
         patientParent = GameObject.Find("Lvl " + currentLvl.ToString());
+
+        Debug.Log(currentPatient);
+        Debug.Log(patientParent.transform.childCount);
+
         if (currentPatient < patientParent.transform.childCount)
         {
             currentPatient_go = patientParent.transform.GetChild(currentPatient).gameObject;

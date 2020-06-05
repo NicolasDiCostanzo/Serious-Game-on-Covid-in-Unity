@@ -14,7 +14,13 @@ public class yes_no_btn_managment : MonoBehaviour
     public void SendToDestination()
     {
         if (GameManager.currentPatient < GameManager.patientParent.transform.childCount)
+        {
+            Debug.Log("avant :" + GameManager.currentPatient);
+
             GameManager.currentPatient++;
+            Debug.Log("currentpatient increase");
+            Debug.Log("après :" + GameManager.currentPatient);
+        }
 
         switch (transform.name)
         {
