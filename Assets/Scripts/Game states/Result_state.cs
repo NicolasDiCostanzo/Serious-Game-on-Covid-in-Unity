@@ -13,6 +13,8 @@ public class Result_state : MonoBehaviour
     [HideInInspector] public int toMission_Healthy;
     [HideInInspector] public int toMission_Total;
 
+    [SerializeField]  GameObject ButtonToOpenResultDetails;
+
     ProgressBarManager progressBar_Script;
     private void OnEnable()
     {
@@ -20,11 +22,16 @@ public class Result_state : MonoBehaviour
         GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = true;
         progressBar_Script = GameObject.Find("Cure progression").GetComponent<ProgressBarManager>();
         ResultCalculation();
+
+        if (!ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(true);
     }
     private void OnDisable()
     {
         GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = false;
         GameManager.resultPanel.SetActive(false);
+
+        if (ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(false);
+
 
         /*result_Script.*/
         toEarth_Covid = 0;

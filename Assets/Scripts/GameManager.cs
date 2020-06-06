@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         _GAME_STATE = eGameState.MainMenu;
-
         _gmInstance = this;
 
         endPanel = GameObject.Find("End panel");
