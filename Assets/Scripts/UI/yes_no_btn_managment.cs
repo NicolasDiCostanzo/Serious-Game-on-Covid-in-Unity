@@ -13,25 +13,19 @@ public class yes_no_btn_managment : MonoBehaviour
 
     public void SendToDestination()
     {
-        if (GameManager.currentPatient < GameManager.patientParent.transform.childCount)
-        {
-            Debug.Log("avant :" + GameManager.currentPatient);
-
-            GameManager.currentPatient++;
-            Debug.Log("currentpatient increase");
-            Debug.Log("après :" + GameManager.currentPatient);
-        }
+        if (PatientManager.currentPatient < PatientManager.patientParent.transform.childCount - 1)
+            PatientManager.currentPatient++;
 
         switch (transform.name)
         {
             case "Earth":
-                GameManager.Earth.Add(GameManager.currentPatient_go.GetComponent<CrewMemberBehavior>());
+                GameManager.Earth.Add(PatientManager.currentPatient_go.GetComponent<MedicalInfoHolder>());
                 break;
             case "Station":
-                GameManager.Station.Add(GameManager.currentPatient_go.GetComponent<CrewMemberBehavior>());
+                GameManager.Station.Add(PatientManager.currentPatient_go.GetComponent<MedicalInfoHolder>());
                 break;
             case "Mission":
-                GameManager.Mission.Add(GameManager.currentPatient_go.GetComponent<CrewMemberBehavior>());
+                GameManager.Mission.Add(PatientManager.currentPatient_go.GetComponent<MedicalInfoHolder>());
                 break;
         }
     }

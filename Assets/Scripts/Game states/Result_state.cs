@@ -13,7 +13,9 @@ public class Result_state : MonoBehaviour
     [HideInInspector] public int toMission_Healthy;
     [HideInInspector] public int toMission_Total;
 
-    [SerializeField]  GameObject ButtonToOpenResultDetails;
+    public bool mistake;
+
+    [SerializeField] GameObject ButtonToOpenResultDetails;
 
     ProgressBarManager progressBar_Script;
     private void OnEnable()
@@ -32,26 +34,15 @@ public class Result_state : MonoBehaviour
 
         if (ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(false);
 
-
-        /*result_Script.*/
         toEarth_Covid = 0;
-        /*result_Script.*/
         toEarth_Disease = 0;
-        /*result_Script.*/
         toEarth_Healthy = 0;
-        /*result_Script.*/
         toStation_Covid = 0;
-        /*result_Script.*/
         toStation_Disease = 0;
-        /*result_Script.*/
         toStation_Healthy = 0;
-        /*result_Script.*/
         toMission_Covid = 0;
-        /*result_Script.*/
         toMission_Disease = 0;
-        /*result_Script.*/
         toMission_Healthy = 0;
-        /*result_Script.*/
         toMission_Total = 0;
     }
 
@@ -59,47 +50,53 @@ public class Result_state : MonoBehaviour
     {
         int cureProgress = 0;
 
-        foreach (CrewMemberBehavior patient in GameManager.Earth)
+        foreach (MedicalInfoHolder patient in GameManager.Earth)
         {
-            if (patient.patientState.ToString() == "Covid")
+            if (patient.patientAffliction.ToString() == "Covid")
             {
                 toEarth_Covid++;
             }
-            else if (patient.patientState.ToString() == "OtherDisease")
+            else if (patient.patientAffliction.ToString() == "OtherDisease")
             {
                 toEarth_Disease++;
+                if (!mistake) mistake = true;
             }
             else
             {
                 toEarth_Healthy++;
+                if (!mistake) mistake = true;
             }
         }
 
-        foreach (CrewMemberBehavior patient in GameManager.Station)
+        foreach (MedicalInfoHolder patient in GameManager.Station)
         {
-            if (patient.patientState.ToString() == "Covid")
+            if (patient.patientAffliction.ToString() == "Covid")
             {
                 toStation_Covid++;
+                if (!mistake) mistake = true;
             }
-            else if (patient.patientState.ToString() == "OtherDisease")
+            else if (patient.patientAffliction.ToString() == "OtherDisease")
             {
                 toStation_Disease++;
             }
             else
             {
                 toStation_Healthy++;
+                if (!mistake) mistake = true;
             }
         }
 
-        foreach (CrewMemberBehavior patient in GameManager.Mission)
+        foreach (MedicalInfoHolder patient in GameManager.Mission)
         {
-            if (patient.patientState.ToString() == "Covid")
+            if (patient.patientAffliction.ToString() == "Covid")
             {
                 toMission_Covid++;
+                if (!mistake) mistake = true;
             }
-            else if (patient.patientState.ToString() == "OtherDisease")
+            else if (patient.patientAffliction.ToString() == "OtherDisease")
             {
                 toMission_Disease++;
+                if (!mistake) mistake = true;
             }
             else
             {
@@ -108,7 +105,7 @@ public class Result_state : MonoBehaviour
             toMission_Total++;
         }
 
-        if (toMission_Healthy > 0)
+        if (toMission_Total > 0)
         {
             if (toMission_Disease > 0)
             {
@@ -120,7 +117,7 @@ public class Result_state : MonoBehaviour
             }
         }
 
-        if (toMission_Covid > 0) //s'il y a un infecté envoyé en mission, alors la mission est annulée et ne fait pas avancer la recherche du remède
+        if (toMission_Covid > 0) //s'il y a un seul infecté par le Covid-19 envoyé en mission, alors la mission est annulée et ne fait pas avancer la recherche du remède
         {
             cureProgress = 0;
         }

@@ -80,8 +80,8 @@ public class TutoManager : MonoBehaviour
     {
         makeDecisionArrow.SetActive(false);
         firstTimeBeforeDecision = false;
-    }    
-    
+    }
+
     public void DeactiveDecisionIndications()
     {
         decisionIndications.SetActive(false);

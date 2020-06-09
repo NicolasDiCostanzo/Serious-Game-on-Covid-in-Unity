@@ -10,7 +10,7 @@ public class End_State : MonoBehaviour
     private void OnEnable()
     {
         GameManager.currentLvl++;
-        GameManager.currentPatient = 0;
+        PatientManager.currentPatient = 0;
 
         GameManager.endPanel.SetActive(true);
 

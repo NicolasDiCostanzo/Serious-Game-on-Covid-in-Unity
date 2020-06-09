@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Open_Close_Panel : MonoBehaviour
 {
@@ -13,9 +11,6 @@ public class Open_Close_Panel : MonoBehaviour
 
     public void ClosePanel()
     {
-
-            panel.SetActive(false);
-            Debug.Log(panel.name);
-        
+        panel.SetActive(false);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CrewMemberBehavior : MonoBehaviour
+public class CrewMemberMovement : MonoBehaviour
 {
     List<Vector3> movingPoints = new List<Vector3>();
     [SerializeField] float speed;
@@ -10,15 +10,7 @@ public class CrewMemberBehavior : MonoBehaviour
     int crossingPointToReach = 0;
     int nbOfCrossingPoints;
     public bool hasToMove;
-
-    public enum ePatientState
-    {
-        Covid,
-        OtherDisease,
-        Healthy
-    }
-
-    public ePatientState patientState;
+    public bool isAtDesk;
 
     void OnEnable()
     {
@@ -40,7 +32,11 @@ public class CrewMemberBehavior : MonoBehaviour
         if (hasToMove)
             MoveTowardPoint(movingPoints[crossingPointToReach]);
 
-        if (Input.GetKeyDown(KeyCode.Space)) SendBack();
+        if (isAtDesk && GameManager._GAME_STATE == GameManager.eGameState.DeskWithoutPatient)
+        {
+            SendBack();
+            isAtDesk = false;
+        }
 
     }
 
@@ -53,6 +49,7 @@ public class CrewMemberBehavior : MonoBehaviour
             if (crossingPointToReach == 1 || crossingPointToReach == nbOfCrossingPoints - 1)
             {
                 hasToMove = false;
+                isAtDesk = true;
 
                 if (crossingPointToReach == 1) GameManager._GAME_STATE = GameManager.eGameState.DeskWithPatient;
             }

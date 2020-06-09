@@ -12,16 +12,14 @@ public class GameManager : MonoBehaviour
 
 
 
-    static public List<CrewMemberBehavior> Earth = new List<CrewMemberBehavior>();
-    static public List<CrewMemberBehavior> Station = new List<CrewMemberBehavior>();
-    static public List<CrewMemberBehavior> Mission = new List<CrewMemberBehavior>();
+    static public List<MedicalInfoHolder> Earth = new List<MedicalInfoHolder>();
+    static public List<MedicalInfoHolder> Station = new List<MedicalInfoHolder>();
+    static public List<MedicalInfoHolder> Mission = new List<MedicalInfoHolder>();
 
-    static public int currentPatient = 0;
     static public GameObject patientParent;
 
     static public GameObject endPanel;
     static public GameObject resultPanel;
-    static public GameObject currentPatient_go;
     static public GameObject storyPanel;
     static public bool tutoHasBeenShown = false;
 
@@ -76,8 +74,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
-        // Debug.Log(_GAME_STATE);
+        
+        //Debug.Log(_GAME_STATE);
 
         switch (_GAME_STATE)
         {
@@ -116,8 +114,6 @@ public class GameManager : MonoBehaviour
             case eGameState.Result:
                 ActivateOneGameState("Result_state");
                 break;
-
-
         }
     }
 
@@ -138,7 +134,7 @@ public class GameManager : MonoBehaviour
                 states_script.enabled = true;
             }
 
-            states[0].enabled = true;//Correspond au Game Manager qui doit être tout le temps actif
+            states[0].enabled = true;//states[0] correspond au Game Manager qui doit être tout le temps actif
         }
     }
 
@@ -157,11 +153,9 @@ public class GameManager : MonoBehaviour
         _GAME_STATE = eGameState.Story;
     }
 
-    public void Switch_State_After_Patient_State()
+    public void DetermineNewStateAfterPatient()
     {
-        patientParent = GameObject.Find("Lvl " + currentLvl.ToString());
-
-        if (currentPatient + 1 < patientParent.transform.childCount)
+        if (PatientManager.currentPatient + 1 < PatientManager.patientParent.transform.childCount)
         {
             _GAME_STATE = eGameState.DeskWithoutPatient;
         }
@@ -169,8 +163,6 @@ public class GameManager : MonoBehaviour
         {
             _GAME_STATE = eGameState.End;
         }
-
-        currentPatient_go.GetComponent<CrewMemberBehavior>().SendBack();
     }
 
     public void Switch_Desk_RightScreenView()
@@ -212,29 +204,6 @@ public class GameManager : MonoBehaviour
     public void Result_State()
     {
         _GAME_STATE = eGameState.Result;
-    }
-
-    public void CallNewPatient()
-    {
-        patientParent = GameObject.Find("Lvl " + currentLvl.ToString());
-
-        Debug.Log(currentPatient);
-        Debug.Log(patientParent.transform.childCount);
-
-        if (currentPatient < patientParent.transform.childCount)
-        {
-            currentPatient_go = patientParent.transform.GetChild(currentPatient).gameObject;
-            currentPatient_go.GetComponent<CrewMemberBehavior>().enabled = true;
-        }
-        else
-        {
-            _GAME_STATE = eGameState.End;
-        }
-    }
-
-    public void SendBackPatient()
-    {
-        currentPatient_go.GetComponent<CrewMemberBehavior>().SendBack();
     }
 
     static public void ActiveButton(GameObject button)

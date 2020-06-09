@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CrewMemberInformation : MonoBehaviour
 {
    // [HideInInspector] public Array<CrewMemberID> crewMemberIDData = new List<CrewMemberID>(3);
-    public CrewMemberID[] crewMemberIDData;
+    public CrewMemberInfo[] crewMemberIDData;
     int nbOfCrewMember;
 
     [SerializeField] Image img1;
@@ -17,7 +17,7 @@ public class CrewMemberInformation : MonoBehaviour
     void Start()
     {
         nbOfCrewMember = GameObject.Find("Lvl 1").transform.childCount;
-        crewMemberIDData = new CrewMemberID[nbOfCrewMember];
+        crewMemberIDData = new CrewMemberInfo[nbOfCrewMember];
 
         GenData();
     }
@@ -26,22 +26,22 @@ public class CrewMemberInformation : MonoBehaviour
     {
         //crewMemberIDData[0].img = img1;
 
-        for (int i = 0; i < nbOfCrewMember; i++)
-        {
-            crewMemberIDData[i] = new CrewMemberID(img1, "", "", "", "", "", 0, 0, "", "");
-        }
+        //for (int i = 0; i < nbOfCrewMember; i++)
+        //{
+        //    crewMemberIDData[i] = new CrewMemberInfo(img1, "", "", "", "", "", 0, 0, "", "");
+        //}
 
-        //crewMemberIDData[0].img =         img1;
-        crewMemberIDData[0].first_name =    "ok c'est cool";
-        crewMemberIDData[0].last_name =     "alley la";
-        crewMemberIDData[0].sex =           "M";
-        crewMemberIDData[0].birth_date =    "06/11/1994";
-        crewMemberIDData[0].birth_place =   "Cabrespine";
-        crewMemberIDData[0].weight =        70;
-        crewMemberIDData[0].size =          180;
+        ////crewMemberIDData[0].img =         img1;
+        //crewMemberIDData[0].first_name =    "ok c'est cool";
+        //crewMemberIDData[0].last_name =     "alley la";
+        //crewMemberIDData[0].sex =           "M";
+        //crewMemberIDData[0].birth_date =    "06/11/1994";
+        //crewMemberIDData[0].birth_place =   "Cabrespine";
+        //crewMemberIDData[0].weight =        70;
+        //crewMemberIDData[0].size =          180;
 
-        crewMemberIDData[0].symptom1 =      "test symptome1";
-        crewMemberIDData[0].symptom2 =      "test symptome2";
+        //crewMemberIDData[0].symptom1 =      "test symptome1";
+        //crewMemberIDData[0].symptom2 =      "test symptome2";
 
 
         ////crewMemberIDData[1].img =         img2;

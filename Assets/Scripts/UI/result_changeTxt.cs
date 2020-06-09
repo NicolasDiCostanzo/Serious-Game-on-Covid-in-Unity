@@ -1,23 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class result_changeTxt : MonoBehaviour
 {
     [SerializeField] Text txt;
     Result_state result_Script;
-    bool panel1 = true;//le panel1 correspond au premier texte de cet état, celui qui annonce la progression de la mission
+    int panelIndex = 0;
     ProgressBarManager progressBarManager_Script;
     string memoriseFirstText;
 
     public void ChangeTxt()
     {
-        GameObject cureProgression_go =  GameObject.Find("Cure progression");
+        GameObject cureProgression_go = GameObject.Find("Cure progression");
 
         progressBarManager_Script = cureProgression_go.GetComponent<ProgressBarManager>();
 
-        if (panel1)
+        if (panelIndex == 0)
         {
             result_Script = GameObject.Find("Game Manager").GetComponent<Result_state>();
 
@@ -42,16 +40,24 @@ public class result_changeTxt : MonoBehaviour
             cureProgression_go.GetComponent<ProgressBarManager>().enabled = false;
             cureProgression_go.GetComponent<Animator>().enabled = true;
 
-            panel1 = false;
+            panelIndex = 2;
         }
-        else
+        else if(panelIndex == 1)
         {
-            GameManager._GAME_STATE = GameManager.eGameState.DeskWithoutPatient;
             txt.text = memoriseFirstText;
 
             cureProgression_go.GetComponent<ProgressBarManager>().active = false;
             cureProgression_go.GetComponent<Animator>().enabled = false;
-            panel1 = true;
+        }
+        else if(panelIndex == 2)
+        {
+            panelIndex = 3;
+            Debug.Log("3e panel");
         } 
+        else if(panelIndex == 3)
+        {
+            GameManager._GAME_STATE = GameManager.eGameState.DeskWithoutPatient;
+
+        }
     }
 }
