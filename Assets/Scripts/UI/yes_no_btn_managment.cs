@@ -16,6 +16,8 @@ public class yes_no_btn_managment : MonoBehaviour
         if (PatientManager.currentPatient < PatientManager.patientParent.transform.childCount - 1)
             PatientManager.currentPatient++;
 
+        PatientManager.currentPatient_go.GetComponent<CrewMemberMovement>().SendBack();
+
         switch (transform.name)
         {
             case "Earth":

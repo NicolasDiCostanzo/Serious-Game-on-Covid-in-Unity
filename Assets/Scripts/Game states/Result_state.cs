@@ -27,24 +27,6 @@ public class Result_state : MonoBehaviour
 
         if (!ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(true);
     }
-    private void OnDisable()
-    {
-        GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = false;
-        GameManager.resultPanel.SetActive(false);
-
-        if (ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(false);
-
-        toEarth_Covid = 0;
-        toEarth_Disease = 0;
-        toEarth_Healthy = 0;
-        toStation_Covid = 0;
-        toStation_Disease = 0;
-        toStation_Healthy = 0;
-        toMission_Covid = 0;
-        toMission_Disease = 0;
-        toMission_Healthy = 0;
-        toMission_Total = 0;
-    }
 
     void ResultCalculation()
     {
@@ -118,14 +100,30 @@ public class Result_state : MonoBehaviour
         }
 
         if (toMission_Covid > 0) //s'il y a un seul infecté par le Covid-19 envoyé en mission, alors la mission est annulée et ne fait pas avancer la recherche du remède
-        {
-            cureProgress = 0;
-        }
+            cureProgress = 0;       
 
-        progressBar_Script.prctToAddToResearch = cureProgress;
+        GameManager.cure += cureProgress;
+        progressBar_Script.prctToAddToResearch = GameManager.cure;
         //Debug.Log(toEarth_Covid + " " + toEarth_Disease + " " + toEarth_Healthy + " " + toStation_Covid + " " + toStation_Disease + " " + toStation_Healthy + " " + toMission_Covid + " " + toMission_Disease + " " + toMission_Healthy);
         //Debug.Log(cureProgress);
     }
 
+    private void OnDisable()
+    {
+        GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = false;
+        GameManager.resultPanel.SetActive(false);
 
+        if (ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(false);
+
+        toEarth_Covid = 0;
+        toEarth_Disease = 0;
+        toEarth_Healthy = 0;
+        toStation_Covid = 0;
+        toStation_Disease = 0;
+        toStation_Healthy = 0;
+        toMission_Covid = 0;
+        toMission_Disease = 0;
+        toMission_Healthy = 0;
+        toMission_Total = 0;
+    }
 }

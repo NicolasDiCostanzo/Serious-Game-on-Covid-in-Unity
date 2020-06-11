@@ -15,6 +15,9 @@ public class MainMenu_state : MonoBehaviour
         GameManager.DeactiveButton(GameObject.Find("button_to_ship_screen"));
         GameManager.DeactiveButton(GameObject.Find("callPatientButton"));
         GameManager.storyPanel.SetActive(false);
+
+        PatientManager.currentPatient = 0;
+        GameManager.currentLvl = 1;
     }
 
     private void OnDisable()

@@ -60,31 +60,37 @@ public class TutoManager : MonoBehaviour
 
     public void DeactiveCallNewPatientArrow()
     {
-        callNewPatientArrow.SetActive(false);
+        if (callNewPatientArrow.activeInHierarchy) callNewPatientArrow.SetActive(false);
         firstTimeInDeskWithoutPatientState = false;
     }
 
     public void DeactivePatientInfoArrow()
     {
-        patientInfoArrow.SetActive(false);
+        if (patientInfoArrow.activeInHierarchy) patientInfoArrow.SetActive(false);
         firstTimeInDeskWithPatientState = false;
     }
 
     public void DeactiveSwitchBetweenPatientInfoArrow()
     {
-        switchBetweenPatientInfoArrow.SetActive(false);
+        if (switchBetweenPatientInfoArrow.activeInHierarchy) switchBetweenPatientInfoArrow.SetActive(false);
         firstTimeInIDViewStateState = false;
     }
 
     public void DeactiveDecisionArrow()
     {
-        makeDecisionArrow.SetActive(false);
-        firstTimeBeforeDecision = false;
+        if (makeDecisionArrow.activeInHierarchy)
+        {
+            makeDecisionArrow.SetActive(false);
+            firstTimeBeforeDecision = false;
+        }
     }
 
     public void DeactiveDecisionIndications()
     {
-        decisionIndications.SetActive(false);
-        firstDecision = false;
+        if (decisionIndications.activeInHierarchy)
+        {
+            decisionIndications.SetActive(false);
+            firstDecision = false;
+        }
     }
 }

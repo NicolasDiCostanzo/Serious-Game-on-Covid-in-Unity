@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class ProgressBarManager : MonoBehaviour
 {
-    /*[HideInInspector] */
     public int prctToAddToResearch;
     [SerializeField] TextMeshProUGUI txtToUpdate;
+
     public bool active;//variable qui permet d'activer le centrage et le grossissement de la barre de progression du remède
 
     private void Update()

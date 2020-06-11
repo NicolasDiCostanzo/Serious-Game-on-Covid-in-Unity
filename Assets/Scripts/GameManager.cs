@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     static public GameObject storyPanel;
     static public bool tutoHasBeenShown = false;
 
-    static public int currentLvl = 1;
+    static public int currentLvl = 1;//niveau actuel
+    static public int totalLvl;//nombre de niveaux au total
+    static public int cure;
 
     [System.Flags]
     public enum eGameState
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         DecisionView,
         End,
         Result,
+        GameFinished
     }
 
     public enum ePatientState
@@ -70,6 +73,8 @@ public class GameManager : MonoBehaviour
 
         storyPanel = GameObject.Find("StoryPanel");
         storyPanel.SetActive(false);
+
+        totalLvl = GameObject.Find("Levels").transform.childCount;
     }
 
     void Update()
@@ -114,6 +119,9 @@ public class GameManager : MonoBehaviour
             case eGameState.Result:
                 ActivateOneGameState("Result_state");
                 break;
+            case eGameState.GameFinished:
+                ActivateOneGameState("GameFinised_State");
+                break;
         }
     }
 
@@ -134,7 +142,7 @@ public class GameManager : MonoBehaviour
                 states_script.enabled = true;
             }
 
-            states[0].enabled = true;//states[0] correspond au Game Manager qui doit être tout le temps actif
+            states[0].enabled = true; //states[0] correspond au Game Manager qui doit être tout le temps actif
         }
     }
 
@@ -161,6 +169,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("in");
             _GAME_STATE = eGameState.End;
         }
     }
