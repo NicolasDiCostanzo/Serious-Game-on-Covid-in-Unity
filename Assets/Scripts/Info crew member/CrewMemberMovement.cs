@@ -31,11 +31,8 @@ public class CrewMemberMovement : MonoBehaviour
         if (hasToMove)
             MoveTowardPoint(movingPoints[crossingPointToReach]);
 
-        Debug.Log(crossingPointToReach);
-
         if (isAtDesk && GameManager._GAME_STATE == GameManager.eGameState.DeskWithoutPatient)
         {
-            Debug.Log("here !");
             SendBack();
             isAtDesk = false;
         }
@@ -63,80 +60,6 @@ public class CrewMemberMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("add in else");
-                crossingPointToReach++;
-            }
-        }
-    }
-
-    public void SendBack()
-    {
-        Debug.Log("add in SendBack");
-        crossingPointToReach++;
-        hasToMove = true;
-    }
-}
-
-/*
- using System.Collections.Generic;
-using UnityEngine;
-
-public class CrewMemberMovement : MonoBehaviour
-{
-    List<Vector3> movingPoints = new List<Vector3>();
-    [SerializeField] float speed;
-    //SwitchBetweenCrewMemberInformation switchBetwInfo_Script;
-
-    int crossingPointToReach = 0;
-    int nbOfCrossingPoints;
-    public bool hasToMove;
-    public bool isAtDesk;
-
-    void OnEnable()
-    {
-        hasToMove = true;
-        GameObject crossingPointsParent = GameObject.Find("Crossing points");
-        nbOfCrossingPoints = crossingPointsParent.transform.childCount;
-
-        //switchBetwInfo_Script = GameObject.Find("Crew member information Manager").GetComponent<SwitchBetweenCrewMemberInformation>();
-
-        for (int i = 0; i < nbOfCrossingPoints; i++)
-        {
-            movingPoints.Add(crossingPointsParent.transform.GetChild(i).gameObject.transform.position);
-        }
-
-    }
-
-    void Update()
-    {
-        if (hasToMove)
-            MoveTowardPoint(movingPoints[crossingPointToReach]);
-
-        if (isAtDesk && GameManager._GAME_STATE == GameManager.eGameState.End)
-        {
-            SendBack();
-            isAtDesk = false;
-        }
-
-    }
-
-    void MoveTowardPoint(Vector3 destination)
-    {
-        transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, destination) < .001f)
-        {
-            if (crossingPointToReach == 1 || crossingPointToReach == nbOfCrossingPoints - 1)
-            {
-                if (crossingPointToReach == nbOfCrossingPoints - 1) crossingPointToReach = 0;
-                hasToMove = false;
-                isAtDesk = true;
-
-
-                if (crossingPointToReach == 1) GameManager._GAME_STATE = GameManager.eGameState.DeskWithPatient;
-            }
-            else
-            {
                 crossingPointToReach++;
             }
         }
@@ -148,5 +71,3 @@ public class CrewMemberMovement : MonoBehaviour
         hasToMove = true;
     }
 }
-
- */

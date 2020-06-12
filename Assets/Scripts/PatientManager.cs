@@ -40,7 +40,7 @@ public class PatientManager : MonoBehaviour
         {
             currentPatient_go = patientParent.transform.GetChild(currentPatient).gameObject;
             currentPatient_go.GetComponent<CrewMemberMovement>().enabled = true;
-
+            currentPatient++;
             UpdateIDInfo();
             UpdateMedicalInfo();
         }

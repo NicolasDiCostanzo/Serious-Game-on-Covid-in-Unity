@@ -16,7 +16,7 @@ public class MainMenu_state : MonoBehaviour
         GameManager.DeactiveButton(GameObject.Find("callPatientButton"));
         GameManager.storyPanel.SetActive(false);
 
-        PatientManager.currentPatient = 0;
+        //PatientManager.currentPatient = 0;
         GameManager.currentLvl = 1;
     }
 

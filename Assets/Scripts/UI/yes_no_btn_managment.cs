@@ -13,8 +13,8 @@ public class yes_no_btn_managment : MonoBehaviour
 
     public void SendToDestination()
     {
-        if (PatientManager.currentPatient < PatientManager.patientParent.transform.childCount - 1)
-            PatientManager.currentPatient++;
+        //if (PatientManager.currentPatient < PatientManager.patientParent.transform.childCount - 1)
+        //    PatientManager.currentPatient++;
 
         PatientManager.currentPatient_go.GetComponent<CrewMemberMovement>().SendBack();
 

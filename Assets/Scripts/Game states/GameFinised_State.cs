@@ -6,8 +6,15 @@ public class GameFinised_State : MonoBehaviour
 {
     [SerializeField] GameObject winPanel;
     [SerializeField] GameObject losePanel;
+
+    GameObject currentCrewDisplayer_txt;
+    GameObject currentLevelDisplayer_txt;
+    
     private void OnEnable()
     {
+        GameObject.Find("crewCount").SetActive(false);
+        GameObject.Find("levelCount").SetActive(false);
+
         Debug.Log("in game finished state");
         if(GameManager.cure >= 100)
         {

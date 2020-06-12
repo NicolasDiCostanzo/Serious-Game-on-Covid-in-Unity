@@ -79,9 +79,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
         //Debug.Log(_GAME_STATE);
-
         switch (_GAME_STATE)
         {
             case eGameState.MainMenu:
@@ -163,7 +161,7 @@ public class GameManager : MonoBehaviour
 
     public void DetermineNewStateAfterPatient()
     {
-        if (PatientManager.currentPatient + 1 < PatientManager.patientParent.transform.childCount)
+        if (PatientManager.currentPatient < PatientManager.patientParent.transform.childCount)
         {
             _GAME_STATE = eGameState.DeskWithoutPatient;
         }

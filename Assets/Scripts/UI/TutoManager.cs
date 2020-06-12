@@ -15,6 +15,9 @@ public class TutoManager : MonoBehaviour
     [SerializeField] GameObject switchBetweenPatientInfoArrow;
     [SerializeField] GameObject makeDecisionArrow;
     [SerializeField] GameObject decisionIndications;
+    [SerializeField] GameObject crewMemberDisplayArrow;
+    [SerializeField] GameObject levelDisplayArrow;
+    [SerializeField] GameObject OK_button;
 
     private void Start()
     {
@@ -36,11 +39,7 @@ public class TutoManager : MonoBehaviour
     {
         currentGameState = GameManager._GAME_STATE;
 
-        if ((currentGameState == GameManager.eGameState.DeskWithoutPatient) && firstTimeInDeskWithoutPatientState)
-        {
-            callNewPatientArrow.SetActive(true);
-        }
-        else if ((currentGameState == GameManager.eGameState.DeskWithoutPatient) && firstTimeInDeskWithPatientState)
+        if ((currentGameState == GameManager.eGameState.DeskWithPatient) && firstTimeInDeskWithPatientState)
         {
             patientInfoArrow.SetActive(true);
         }
@@ -55,6 +54,12 @@ public class TutoManager : MonoBehaviour
         else if ((currentGameState == GameManager.eGameState.DecisionView) && (firstDecision))
         {
             decisionIndications.SetActive(true);
+        }
+
+        if (crewMemberDisplayArrow.activeInHierarchy && levelDisplayArrow.activeInHierarchy && (GameManager._GAME_STATE == GameManager.eGameState.IDView || GameManager._GAME_STATE == GameManager.eGameState.DecisionView))
+        {
+            crewMemberDisplayArrow.SetActive(false);
+            levelDisplayArrow.SetActive(false);
         }
     }
 
