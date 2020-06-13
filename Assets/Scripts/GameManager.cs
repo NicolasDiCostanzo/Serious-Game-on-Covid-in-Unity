@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     static public int totalLvl;//nombre de niveaux au total
     static public int cure;
 
+    [SerializeField] GameObject pause;
+
     [System.Flags]
     public enum eGameState
     {
@@ -120,6 +122,18 @@ public class GameManager : MonoBehaviour
             case eGameState.GameFinished:
                 ActivateOneGameState("GameFinised_State");
                 break;
+        }
+
+        if(_GAME_STATE != eGameState.MainMenu && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!pause.activeInHierarchy)
+            {
+                pause.SetActive(true);
+            }
+            else
+            {
+                pause.SetActive(false);
+            }
         }
     }
 
