@@ -30,7 +30,7 @@ public class GameFinised_State : MonoBehaviour
 
     private void OnDisable()
     {
-        if (winPanel.activeInHierarchy) winPanel.SetActive(false);
-        if (losePanel.activeInHierarchy) losePanel.SetActive(false);
+        if (winPanel.activeInHierarchy && winPanel) winPanel.SetActive(false);
+        if (losePanel.activeInHierarchy && losePanel) losePanel.SetActive(false);
     }
 }

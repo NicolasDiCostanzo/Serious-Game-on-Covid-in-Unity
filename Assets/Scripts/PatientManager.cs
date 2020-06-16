@@ -21,7 +21,8 @@ public class PatientManager : MonoBehaviour
     private void Update()
     {
         patientParent = GameObject.Find("Lvl " + GameManager.currentLvl.ToString());
-        currentPatient_go = patientParent.transform.GetChild(currentPatient).gameObject;
+        //if(currentPatient > 0) Debug.Log(patientParent.transform.GetChild(currentPatient - 1).name);
+        //if(currentPatient > 0) currentPatient_go = patientParent.transform.GetChild(currentPatient - 1).gameObject;
 
         if (GameManager._GAME_STATE == GameManager.eGameState.End) currentPatient = 0;
         //Debug.Log(currentPatient_go.name);

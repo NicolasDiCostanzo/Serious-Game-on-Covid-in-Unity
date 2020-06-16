@@ -34,7 +34,6 @@ public class TutoManager : MonoBehaviour
         firstDecision = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentGameState = GameManager._GAME_STATE;
@@ -54,6 +53,7 @@ public class TutoManager : MonoBehaviour
         else if ((currentGameState == GameManager.eGameState.DecisionView) && (firstDecision))
         {
             decisionIndications.SetActive(true);
+            firstDecision = false;
         }
 
         if (crewMemberDisplayArrow.activeInHierarchy && levelDisplayArrow.activeInHierarchy && (GameManager._GAME_STATE == GameManager.eGameState.IDView || GameManager._GAME_STATE == GameManager.eGameState.DecisionView))
@@ -95,7 +95,7 @@ public class TutoManager : MonoBehaviour
         if (decisionIndications.activeInHierarchy)
         {
             decisionIndications.SetActive(false);
-            firstDecision = false;
+            //firstDecision = false;
         }
     }
 }

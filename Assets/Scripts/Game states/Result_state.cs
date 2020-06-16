@@ -13,13 +13,14 @@ public class Result_state : MonoBehaviour
     [HideInInspector] public int toMission_Healthy;
     [HideInInspector] public int toMission_Total;
 
-    public bool mistake;
+    public static bool mistake;//retiens si une erreur a été commise ou non. Permet de savoir s'il faut afficher le panel qui récapitule ses erreuers au joueur
 
     [SerializeField] GameObject ButtonToOpenResultDetails;
 
     ProgressBarManager progressBar_Script;
     private void OnEnable()
     {
+        mistake = false;
         GameManager.resultPanel.SetActive(true);
         GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = true;
         progressBar_Script = GameObject.Find("Cure progression").GetComponent<ProgressBarManager>();
@@ -38,7 +39,7 @@ public class Result_state : MonoBehaviour
             {
                 toEarth_Covid++;
             }
-            else if (patient.patientAffliction.ToString() == "OtherDisease")
+            else if (patient.patientAffliction.ToString() == "OtherCommunicableDisease")
             {
                 toEarth_Disease++;
                 if (!mistake) mistake = true;
@@ -57,7 +58,7 @@ public class Result_state : MonoBehaviour
                 toStation_Covid++;
                 if (!mistake) mistake = true;
             }
-            else if (patient.patientAffliction.ToString() == "OtherDisease")
+            else if (patient.patientAffliction.ToString() == "OtherCommunicableDisease")
             {
                 toStation_Disease++;
             }
@@ -75,7 +76,7 @@ public class Result_state : MonoBehaviour
                 toMission_Covid++;
                 if (!mistake) mistake = true;
             }
-            else if (patient.patientAffliction.ToString() == "OtherDisease")
+            else if (patient.patientAffliction.ToString() == "OtherCommunicableDisease")
             {
                 toMission_Disease++;
                 if (!mistake) mistake = true;
@@ -110,7 +111,8 @@ public class Result_state : MonoBehaviour
 
     private void OnDisable()
     {
-        GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = false;
+        ProgressBarManager progressBar_Script = GameObject.Find("Cure progression").GetComponent<ProgressBarManager>();
+        if(progressBar_Script.isActiveAndEnabled) progressBar_Script.enabled = false;
         GameManager.resultPanel.SetActive(false);
 
         if (ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(false);

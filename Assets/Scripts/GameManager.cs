@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
     public enum ePatientState
     {
         Covid,
-        OtherDisease,
-        Healthy
+        OtherCommunicableDisease,
+        NonCommunicableDisease
     }
 
     public static GameManager GmInstance
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public static void StartGame()
     {
         _GAME_STATE = eGameState.DeskWithoutPatient;
     }
@@ -181,7 +181,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("in");
             _GAME_STATE = eGameState.End;
         }
     }

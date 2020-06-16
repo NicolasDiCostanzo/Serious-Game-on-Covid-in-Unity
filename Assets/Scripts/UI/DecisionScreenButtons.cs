@@ -10,8 +10,17 @@ public class DecisionScreenButtons : MonoBehaviour
 
     private void OnMouseDown()
     {
-        raycastBlocker.SetActive(true);
-        panelToDisplay.SetActive(true);
+        if(raycastBlocker) raycastBlocker.SetActive(true);
+
+        if (panelToDisplay.activeInHierarchy)
+        {
+            panelToDisplay.SetActive(false);
+        }
+        else
+        {
+            panelToDisplay.SetActive(true);
+
+        }
     }
 
 }
