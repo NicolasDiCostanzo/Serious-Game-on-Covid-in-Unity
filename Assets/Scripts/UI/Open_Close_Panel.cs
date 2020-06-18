@@ -2,8 +2,8 @@
 
 public class Open_Close_Panel : MonoBehaviour
 {
-    [SerializeField] GameObject panel;
-    [SerializeField] bool helpBtn;
+    [SerializeField] private GameObject panel = null;
+    [SerializeField] private bool helpBtn = false;
 
 
     public void OpenPanel()

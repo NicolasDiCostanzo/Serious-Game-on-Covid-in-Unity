@@ -2,7 +2,7 @@
 
 public class yes_no_btn_managment : MonoBehaviour
 {
-    [SerializeField] GameObject raycastBlocker;
+    [SerializeField] private GameObject raycastBlocker = null;
     public void UndisplayPanel()
     {
         gameObject.SetActive(false);

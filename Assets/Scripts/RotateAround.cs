@@ -2,8 +2,8 @@
 
 public class RotateAround : MonoBehaviour
 {
-    [SerializeField] GameObject target;
-    [SerializeField] bool sensHoraire;
+    [SerializeField] GameObject target = null;
+    [SerializeField] bool sensHoraire = false;
     int mult = 1;
 
     private void Start()

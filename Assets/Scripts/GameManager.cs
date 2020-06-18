@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     static public int totalLvl;//nombre de niveaux au total
     static public int cure;
 
-    [SerializeField] GameObject pause;
+    [SerializeField]private GameObject pause = null;
 
     [System.Flags]
     public enum eGameState

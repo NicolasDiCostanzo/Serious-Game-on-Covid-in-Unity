@@ -3,14 +3,14 @@
 public class PatientManager : MonoBehaviour
 {
     static public int currentPatient = 0;
-    static public GameObject patientParent;
-    static public GameObject currentPatient_go;
+    static public GameObject patientParent = null;
+    static public GameObject currentPatient_go = null;
 
-    [SerializeField] GameObject id_GO;
-    DisplayPatientInfoOnID displayInfo_Script;
+    [SerializeField] GameObject id_GO = null;
+    DisplayPatientInfoOnID displayInfo_Script = null;
 
-    [SerializeField] GameObject medicInfo_GO;
-    DisplayPatientMedicalInfo displayMedicalInfo_Script;
+    [SerializeField] GameObject medicInfo_GO = null;
+    DisplayPatientMedicalInfo displayMedicalInfo_Script = null;
 
     private void Start()
     {

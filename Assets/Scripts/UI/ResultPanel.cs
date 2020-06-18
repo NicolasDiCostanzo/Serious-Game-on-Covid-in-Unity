@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class ResultPanel : MonoBehaviour
 {
-    [SerializeField] Text txt;
-    [SerializeField] GameObject mistakesPanel;
-    [SerializeField] private GameObject symptomHelp_btn;
+    [SerializeField] private Text txt = null;
+    [SerializeField] private GameObject mistakesPanel = null;
+    [SerializeField] private GameObject symptomHelp_btn = null;
 
-    Result_state result_Script;
-    int panelIndex = 0;
-    ProgressBarManager progressBarManager_Script;
-    string memoriseFirstText;
+    private Result_state result_Script;
+    private int panelIndex = 0;
+    private ProgressBarManager progressBarManager_Script;
+    private string memoriseFirstText;
 
     public void ChangeTxt()
     {

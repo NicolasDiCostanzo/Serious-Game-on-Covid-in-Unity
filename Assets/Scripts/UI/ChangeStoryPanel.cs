@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class ChangeStoryPanel : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI text1;
-    [SerializeField] TextMeshProUGUI text2;
+    [SerializeField] TextMeshProUGUI text1 = null;
+    [SerializeField] TextMeshProUGUI text2 = null;
     public void ButtonFct()
     {
         if (text1.IsActive())

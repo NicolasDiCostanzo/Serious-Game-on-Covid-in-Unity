@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class DeskWithoutPatient_State : MonoBehaviour
 {
-    [SerializeField] GameObject callPatientButton;
-    GameObject buttonRightScreen;
-    GameObject buttonLeftScreen;
+    [SerializeField] private GameObject callPatientButton = null;
+    private GameObject buttonRightScreen = null;
+    private GameObject buttonLeftScreen = null;
 
-    CinemachineVirtualCamera DeskCam;
+    private CinemachineVirtualCamera DeskCam = null;
 
-    [SerializeField] GameObject currentCrewDisplayer_txt;
-    [SerializeField] GameObject currentLevelDisplayer_txt;
+    [SerializeField] private GameObject currentCrewDisplayer_txt = null;
+    [SerializeField] private GameObject currentLevelDisplayer_txt = null;
 
-    [SerializeField] GameObject okButton;
-    [SerializeField] GameObject crewArrow;
+    [SerializeField] private GameObject okButton = null;
+    [SerializeField] private GameObject crewArrow = null;
 
-    bool firstTimeInThisState = true;
+    private bool firstTimeInThisState = true;
 
     private void OnEnable()
     {

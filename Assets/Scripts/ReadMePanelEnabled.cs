@@ -2,10 +2,10 @@
 
 public class ReadMePanelEnabled : MonoBehaviour
 {
-    [SerializeField] GameObject Francais;
-    [SerializeField] GameObject English;
-    [SerializeField] GameObject Fr_btn;
-    [SerializeField] GameObject En_btn;
+    [SerializeField] GameObject Francais = null;
+    [SerializeField] GameObject English = null;
+    [SerializeField] GameObject Fr_btn = null;
+    [SerializeField] GameObject En_btn = null;
 
     private void OnEnable()
     {

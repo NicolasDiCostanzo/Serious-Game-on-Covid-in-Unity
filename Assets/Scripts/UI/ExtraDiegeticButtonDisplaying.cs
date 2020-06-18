@@ -2,8 +2,8 @@
 
 public class ExtraDiegeticButtonDisplaying : MonoBehaviour
 {
-    [SerializeField] GameObject panelToDisplay;
-    [SerializeField] GameObject raycastBlocker;
+    [SerializeField] private GameObject panelToDisplay  = null;
+    [SerializeField] private GameObject raycastBlocker = null;
 
 
     private void OnMouseDown()

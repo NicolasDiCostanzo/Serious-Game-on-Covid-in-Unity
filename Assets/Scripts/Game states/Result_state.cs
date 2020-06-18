@@ -13,12 +13,12 @@ public class Result_state : MonoBehaviour
     [HideInInspector] public int toMission_Healthy;
     [HideInInspector] public int toMission_Total;
 
-    [SerializeField] int prctToAddForSickPatient;
-    [SerializeField] int prctToAddFortHealthyPatient;
+    [SerializeField] int prctToAddForSickPatient = 0;
+    [SerializeField] int prctToAddFortHealthyPatient = 0;
 
     public static bool mistake;//retiens si une erreur a été commise ou non. Permet de savoir s'il faut afficher le panel qui récapitule ses erreuers au joueur
 
-    [SerializeField] private GameObject ButtonToOpenResultDetails;
+    [SerializeField] private GameObject ButtonToOpenResultDetails = null;
 
     ProgressBarManager progressBar_Script;
     private void OnEnable()

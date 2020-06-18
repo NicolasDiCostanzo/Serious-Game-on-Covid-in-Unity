@@ -2,8 +2,8 @@
 
 public class GameFinised_State : MonoBehaviour
 {
-    [SerializeField] GameObject winPanel;
-    [SerializeField] GameObject losePanel;
+    [SerializeField] GameObject winPanel = null;
+    [SerializeField] GameObject losePanel = null;
 
     private void OnEnable()
     {

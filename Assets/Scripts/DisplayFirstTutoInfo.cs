@@ -2,10 +2,10 @@
 
 public class DisplayFirstTutoInfo : MonoBehaviour
 {
-    [SerializeField] GameObject crewArrow;
-    [SerializeField] GameObject levelArrow;
-    [SerializeField] GameObject callNewPatientArrow;
-    [SerializeField] GameObject callNewPatientButton;
+    [SerializeField] private GameObject crewArrow = null;
+    [SerializeField] private GameObject levelArrow = null;
+    [SerializeField] private GameObject callNewPatientArrow = null;
+    //[SerializeField] private GameObject callNewPatientButton = null;
 
     public void DisplayArrowInfo()
     {

@@ -10,14 +10,14 @@ public class TutoManager : MonoBehaviour
     [HideInInspector] public bool firstTimeBeforeDecision = true;
     [HideInInspector] public bool firstDecision = true;
 
-    [SerializeField] GameObject callNewPatientArrow;
-    [SerializeField] GameObject patientInfoArrow;
-    [SerializeField] GameObject switchBetweenPatientInfoArrow;
-    [SerializeField] GameObject makeDecisionArrow;
-    [SerializeField] GameObject decisionIndications;
-    [SerializeField] GameObject crewMemberDisplayArrow;
-    [SerializeField] GameObject levelDisplayArrow;
-    [SerializeField] GameObject OK_button;
+    [SerializeField] private GameObject callNewPatientArrow = null;
+    [SerializeField] private GameObject patientInfoArrow = null;
+    [SerializeField] private GameObject switchBetweenPatientInfoArrow = null;
+    [SerializeField] private GameObject makeDecisionArrow = null;
+    [SerializeField] private GameObject decisionIndications = null;
+    [SerializeField] private GameObject crewMemberDisplayArrow = null;
+    [SerializeField] private GameObject levelDisplayArrow = null;
+    //[SerializeField] private GameObject OK_button = null;
 
     private void Start()
     {

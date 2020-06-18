@@ -2,11 +2,11 @@
 
 public class ExtradiegeticButtonAppearance : MonoBehaviour
 {
-    Renderer texture;
-    Color startColor;
+    private Renderer texture;
+    private Color startColor;
 
-    [SerializeField] Color mouseOnColor;
-    [SerializeField] Color mouseDownColor;
+    [SerializeField] private Color mouseOnColor = Color.black;
+    [SerializeField] private Color mouseDownColor = Color.black;
     private void Start()
     {
         texture = GetComponent<Renderer>();

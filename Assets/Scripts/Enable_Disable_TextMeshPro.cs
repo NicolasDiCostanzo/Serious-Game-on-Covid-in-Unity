@@ -2,7 +2,7 @@
 
 public class Enable_Disable_TextMeshPro : MonoBehaviour
 {
-    [SerializeField] GameObject TMPToEnableOrDisable;
+    [SerializeField] GameObject TMPToEnableOrDisable = null;
     public void EnableTMPro()
     {
         TMPToEnableOrDisable.SetActive(true);

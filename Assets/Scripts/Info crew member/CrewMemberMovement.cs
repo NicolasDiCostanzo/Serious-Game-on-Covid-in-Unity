@@ -4,7 +4,7 @@ using UnityEngine;
 public class CrewMemberMovement : MonoBehaviour
 {
     List<Vector3> movingPoints = new List<Vector3>();
-    [SerializeField] float speed;
+    [SerializeField] float speed = 0f;
 
     int crossingPointToReach;
     int nbOfCrossingPoints;
