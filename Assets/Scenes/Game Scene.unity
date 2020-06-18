@@ -3290,7 +3290,7 @@ PrefabInstance:
     - target: {fileID: -5805453055564480732, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
       propertyPath: patientAffliction
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5805453055564480732, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
@@ -24186,6 +24186,7 @@ GameObject:
   - component: {fileID: 1799720338}
   - component: {fileID: 1799720337}
   - component: {fileID: 1799720340}
+  - component: {fileID: 1799720341}
   m_Layer: 0
   m_Name: QuitPanel
   m_TagString: Untagged
@@ -24283,6 +24284,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseOnColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   mouseDownColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+--- !u!114 &1799720341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799720335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff438bdd784c72c468631438c1ce79eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1802619263
 GameObject:
   m_ObjectHideFlags: 0
