@@ -18,7 +18,7 @@ public class Result_state : MonoBehaviour
 
     public static bool mistake;//retiens si une erreur a été commise ou non. Permet de savoir s'il faut afficher le panel qui récapitule ses erreuers au joueur
 
-    [SerializeField] GameObject ButtonToOpenResultDetails;
+    [SerializeField] private GameObject ButtonToOpenResultDetails;
 
     ProgressBarManager progressBar_Script;
     private void OnEnable()
@@ -110,8 +110,8 @@ public class Result_state : MonoBehaviour
         GameManager.cure += cureProgress;
         progressBar_Script.prctToAddToResearch = GameManager.cure;
 
-        Debug.Log(toEarth_Covid + " " + toEarth_Disease + " " + toEarth_Healthy + " " + toStation_Covid + " " + toStation_Disease + " " + toStation_Healthy + " " + toMission_Covid + " " + toMission_Disease + " " + toMission_Healthy);
-        Debug.Log(cureProgress);
+        //Debug.Log(toEarth_Covid + " " + toEarth_Disease + " " + toEarth_Healthy + " " + toStation_Covid + " " + toStation_Disease + " " + toStation_Healthy + " " + toMission_Covid + " " + toMission_Disease + " " + toMission_Healthy);
+        //Debug.Log(cureProgress);
     }
 
     private void OnDisable()

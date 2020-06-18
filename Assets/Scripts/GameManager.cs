@@ -237,7 +237,7 @@ public class GameManager : MonoBehaviour
 
     static public void DeactiveButton(GameObject button)
     {
-        button.GetComponent<Image>().enabled = false;
+        if(button.GetComponent<Image>()) button.GetComponent<Image>().enabled = false;
         button.GetComponentInChildren<Text>().enabled = false;
     }
 

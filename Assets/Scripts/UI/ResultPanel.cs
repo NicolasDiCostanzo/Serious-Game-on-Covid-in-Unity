@@ -7,7 +7,7 @@ public class ResultPanel : MonoBehaviour
 {
     [SerializeField] Text txt;
     [SerializeField] GameObject mistakesPanel;
-    [SerializeField] GameObject symptomHelp_btn;
+    [SerializeField] private GameObject symptomHelp_btn;
 
     Result_state result_Script;
     int panelIndex = 0;

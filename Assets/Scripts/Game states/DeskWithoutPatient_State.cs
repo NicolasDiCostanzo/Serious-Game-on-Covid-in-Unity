@@ -45,10 +45,6 @@ public class DeskWithoutPatient_State : MonoBehaviour
     private void OnDisable()
     {
         DeskCam.Priority = 0;
-
-        //if (GameManager._GAME_STATE != GameManager.eGameState.DeskWithPatient) 
-        //    DeskCam.Priority = 0;
-
-        GameManager.DeactiveButton(callPatientButton);
+        if(callPatientButton) GameManager.DeactiveButton(callPatientButton);
     }
 }
