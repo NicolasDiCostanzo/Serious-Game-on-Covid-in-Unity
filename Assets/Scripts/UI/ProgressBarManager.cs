@@ -6,6 +6,8 @@ public class ProgressBarManager : MonoBehaviour
     public int prctToAddToResearch;
     [SerializeField] TextMeshProUGUI txtToUpdate;
 
+    bool animIsOver;
+
     public bool active;//variable qui permet d'activer le centrage et le grossissement de la barre de progression du remède
 
     private void Update()
@@ -23,6 +25,7 @@ public class ProgressBarManager : MonoBehaviour
                 if (transform.GetChild(0).localScale.y >= 1)
                 {
                     transform.GetChild(0).localScale = new Vector3(transform.GetChild(0).localScale.x, 1, transform.GetChild(0).localScale.z);
+                    animIsOver = true;
                 }
                 else
                 {
@@ -33,8 +36,18 @@ public class ProgressBarManager : MonoBehaviour
             }
             else //quand l'animation qui augmente la progression du remède est terminée...
             {
+                animIsOver = true;
+            }
+
+            if (animIsOver)
+            {
                 GameManager.ActiveButton(GameObject.Find("res_Button"));
             }
+            else
+            {
+                GameManager.DeactiveButton(GameObject.Find("res_Button"));
+            }
+
         }
     }
 

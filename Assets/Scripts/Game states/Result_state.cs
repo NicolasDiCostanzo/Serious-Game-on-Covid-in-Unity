@@ -13,6 +13,9 @@ public class Result_state : MonoBehaviour
     [HideInInspector] public int toMission_Healthy;
     [HideInInspector] public int toMission_Total;
 
+    [SerializeField] int prctToAddForSickPatient;
+    [SerializeField] int prctToAddFortHealthyPatient;
+
     public static bool mistake;//retiens si une erreur a été commise ou non. Permet de savoir s'il faut afficher le panel qui récapitule ses erreuers au joueur
 
     [SerializeField] GameObject ButtonToOpenResultDetails;
@@ -20,6 +23,7 @@ public class Result_state : MonoBehaviour
     ProgressBarManager progressBar_Script;
     private void OnEnable()
     {
+        ReinitVar();
         mistake = false;
         GameManager.resultPanel.SetActive(true);
         GameObject.Find("Cure progression").GetComponent<ProgressBarManager>().enabled = true;
@@ -92,11 +96,11 @@ public class Result_state : MonoBehaviour
         {
             if (toMission_Disease > 0)
             {
-                cureProgress += toMission_Total * 7;
+                cureProgress += toMission_Total * prctToAddForSickPatient;
             }
             else
             {
-                cureProgress = toMission_Healthy * 100;
+                cureProgress = toMission_Healthy * prctToAddFortHealthyPatient;
             }
         }
 
@@ -105,18 +109,30 @@ public class Result_state : MonoBehaviour
 
         GameManager.cure += cureProgress;
         progressBar_Script.prctToAddToResearch = GameManager.cure;
-        //Debug.Log(toEarth_Covid + " " + toEarth_Disease + " " + toEarth_Healthy + " " + toStation_Covid + " " + toStation_Disease + " " + toStation_Healthy + " " + toMission_Covid + " " + toMission_Disease + " " + toMission_Healthy);
-        //Debug.Log(cureProgress);
+
+        Debug.Log(toEarth_Covid + " " + toEarth_Disease + " " + toEarth_Healthy + " " + toStation_Covid + " " + toStation_Disease + " " + toStation_Healthy + " " + toMission_Covid + " " + toMission_Disease + " " + toMission_Healthy);
+        Debug.Log(cureProgress);
     }
 
     private void OnDisable()
     {
         ProgressBarManager progressBar_Script = GameObject.Find("Cure progression").GetComponent<ProgressBarManager>();
+
         if (progressBar_Script.isActiveAndEnabled) progressBar_Script.enabled = false;
         GameManager.resultPanel.SetActive(false);
 
         if (ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(false);
 
+        ReinitVar();
+
+        if (GameManager.currentLvl < GameManager.totalLvl)
+        {
+            GameManager.currentLvl++;
+        }
+    }
+
+    void ReinitVar()
+    {
         toEarth_Covid = 0;
         toEarth_Disease = 0;
         toEarth_Healthy = 0;

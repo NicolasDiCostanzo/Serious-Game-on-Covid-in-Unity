@@ -10,7 +10,6 @@ public class Open_Close_Panel : MonoBehaviour
     {
         if (helpBtn && !panel.activeInHierarchy) FindObjectOfType<SoundManager>().Play("Aide");
         panel.SetActive(true);
-        Debug.Log("open");
     }
 
     public void ClosePanel()

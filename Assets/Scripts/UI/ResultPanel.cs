@@ -71,7 +71,7 @@ public class ResultPanel : MonoBehaviour
     {
         Reinitialize();
 
-        if (GameManager.currentLvl <= GameManager.totalLvl && GameManager.cure < 100)
+        if (GameManager.currentLvl < GameManager.totalLvl && GameManager.cure < 100)
         {
             GameManager._GAME_STATE = GameManager.eGameState.DeskWithoutPatient;
         }
@@ -152,7 +152,6 @@ public class ResultPanel : MonoBehaviour
 
         for (int i = 0; i < mistakesPanel.transform.childCount; i++)
         {
-            Debug.Log(mistakesPanel.transform.GetChild(0).transform.GetChild(i).name);
             string mistakesPanelTxt = mistakesPanel.transform.GetChild(0).name;
 
             if (mistakesPanelTxt == "")

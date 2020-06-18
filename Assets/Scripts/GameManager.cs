@@ -77,11 +77,13 @@ public class GameManager : MonoBehaviour
         storyPanel.SetActive(false);
 
         totalLvl = GameObject.Find("Levels").transform.childCount;
+
+        cure = 0;
     }
 
     void Update()
     {
-        Debug.Log(_GAME_STATE);
+        //Debug.Log(_GAME_STATE);
         switch (_GAME_STATE)
         {
             case eGameState.MainMenu:

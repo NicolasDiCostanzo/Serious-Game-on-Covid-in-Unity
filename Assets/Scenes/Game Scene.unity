@@ -729,6 +729,8 @@ MonoBehaviour:
   toMission_Disease: 0
   toMission_Healthy: 0
   toMission_Total: 0
+  prctToAddForSickPatient: 7
+  prctToAddFortHealthyPatient: 20
   ButtonToOpenResultDetails: {fileID: 1949911387}
 --- !u!114 &37715055
 MonoBehaviour:
@@ -6918,7 +6920,7 @@ PrefabInstance:
     - target: {fileID: 4941629079399615722, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4941629079399615722, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
@@ -8519,7 +8521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &638296036
 GameObject:
@@ -17173,6 +17175,11 @@ PrefabInstance:
       propertyPath: crewMemberInfo.weight
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: -5805453055564480732, guid: f7fa2c67aca88a04392b3337e2b43930,
+        type: 3}
+      propertyPath: patientAffliction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4941629079399615721, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
       propertyPath: m_Name
@@ -17374,7 +17381,7 @@ Transform:
   - {fileID: 1135289313}
   - {fileID: 1443255298}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1256071232
 GameObject:
@@ -25264,6 +25271,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd918f355f278d740a893b9a8b49a85c, type: 3}
+--- !u!1 &1858189694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1858189695}
+  m_Layer: 0
+  m_Name: Stock crew members pas en jeu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1858189695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858189694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867476665
 GameObject:
   m_ObjectHideFlags: 0
@@ -25625,7 +25662,7 @@ PrefabInstance:
     - target: {fileID: 4941629079399615722, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4941629079399615722, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
@@ -28133,7 +28170,7 @@ PrefabInstance:
     - target: {fileID: 4941629079399615722, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4941629079399615722, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}
@@ -28865,6 +28902,11 @@ PrefabInstance:
         type: 3}
       propertyPath: crewMemberInfo.symptom6
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -5805453055564480732, guid: f7fa2c67aca88a04392b3337e2b43930,
+        type: 3}
+      propertyPath: patientAffliction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4941629079399615721, guid: f7fa2c67aca88a04392b3337e2b43930,
         type: 3}

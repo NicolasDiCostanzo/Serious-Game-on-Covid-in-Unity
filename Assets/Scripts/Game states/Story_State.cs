@@ -10,7 +10,7 @@ public class Story_State : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.storyPanel.SetActive(false);
+        if(GameManager.storyPanel) GameManager.storyPanel.SetActive(false);
         GameObject.Find("Main menu cam").GetComponent<CinemachineVirtualCamera>().Priority = 0;
     }
 }

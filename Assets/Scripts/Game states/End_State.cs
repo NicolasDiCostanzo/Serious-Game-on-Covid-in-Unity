@@ -9,7 +9,6 @@ public class End_State : MonoBehaviour
     {
         FindObjectOfType<SoundManager>().Play("Vaisseau");
 
-        GameManager.currentLvl++;
         PatientManager.currentPatient = 0;
 
         GameManager.endPanel.SetActive(true);
@@ -24,6 +23,6 @@ public class End_State : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.endPanel.SetActive(false);
+        if(GameManager.endPanel) GameManager.endPanel.SetActive(false);
     }
 }

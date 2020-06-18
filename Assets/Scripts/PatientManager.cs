@@ -33,7 +33,7 @@ public class PatientManager : MonoBehaviour
     {
         patientParent = GameObject.Find("Lvl " + GameManager.currentLvl.ToString());
 
-        if (currentPatient < patientParent.transform.childCount)
+        if (currentPatient + 1 <= patientParent.transform.childCount)//S'il y a encore des patients à examiner dans cet équipage
         {
             currentPatient_go = patientParent.transform.GetChild(currentPatient).gameObject;
             currentPatient_go.GetComponent<CrewMemberMovement>().enabled = true;
@@ -41,7 +41,7 @@ public class PatientManager : MonoBehaviour
             UpdateIDInfo();
             UpdateMedicalInfo();
         }
-        else
+        else//Sinon on change l'état du jeu
         {
             GameManager._GAME_STATE = GameManager.eGameState.End;
         }

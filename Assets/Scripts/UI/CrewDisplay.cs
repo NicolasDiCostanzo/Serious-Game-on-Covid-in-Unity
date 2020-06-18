@@ -12,6 +12,6 @@ public class CrewDisplay : MonoBehaviour
 
     private void Update()
     {
-        text.text = (PatientManager.currentPatient).ToString() + " / " + PatientManager.patientParent.transform.childCount + " patients";
+        if(text) text.text = (PatientManager.currentPatient).ToString() + " / " + PatientManager.patientParent.transform.childCount + " patients";
     }
 }
