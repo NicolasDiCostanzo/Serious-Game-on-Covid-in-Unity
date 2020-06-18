@@ -97,6 +97,7 @@ public class ResultPanel : MonoBehaviour
         mistakesPanel.SetActive(false);
         panelIndex = 0;
     }
+
     void AllMissedPlacedMembers()
     {
         foreach (MedicalInfoHolder member in GameManager.Earth)
