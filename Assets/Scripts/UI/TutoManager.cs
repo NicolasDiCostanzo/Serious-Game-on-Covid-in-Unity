@@ -95,7 +95,6 @@ public class TutoManager : MonoBehaviour
         if (decisionIndications.activeInHierarchy)
         {
             decisionIndications.SetActive(false);
-            //firstDecision = false;
         }
     }
 }

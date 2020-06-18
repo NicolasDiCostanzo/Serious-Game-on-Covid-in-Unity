@@ -13,6 +13,7 @@ public class ProgressBarManager : MonoBehaviour
         if (GameManager._GAME_STATE == GameManager.eGameState.Result && !active)
         {
             GetComponent<Animator>().enabled = true;
+            FindObjectOfType<SoundManager>().Play("Ebulition");
         }
 
         if (active)
@@ -30,7 +31,7 @@ public class ProgressBarManager : MonoBehaviour
 
                 txtToUpdate.text = Mathf.Round(transform.GetChild(0).localScale.y * 100).ToString() + "%";
             }
-            else //quand l'animation qui augmente la progression du remède est terminée
+            else //quand l'animation qui augmente la progression du remède est terminée...
             {
                 GameManager.ActiveButton(GameObject.Find("res_Button"));
             }

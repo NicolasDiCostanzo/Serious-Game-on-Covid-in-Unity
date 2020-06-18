@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using Cinemachine;
+﻿using Cinemachine;
+using UnityEngine;
 
 public class DeskWithoutPatient_State : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class DeskWithoutPatient_State : MonoBehaviour
         buttonLeftScreen = GameObject.Find("button_to_ship_screen");
         DeskCam = GameObject.Find("DeskViewCam").GetComponent<CinemachineVirtualCamera>();
 
-        if(!firstTimeInThisState) GameManager.ActiveButton(callPatientButton);
+        if (!firstTimeInThisState) GameManager.ActiveButton(callPatientButton);
 
         if (DeskCam.Priority < 1) DeskCam.Priority = 1;
 

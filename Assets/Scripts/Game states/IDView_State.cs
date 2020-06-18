@@ -46,8 +46,8 @@ public class IDView_State : MonoBehaviour
         if (GameManager._GAME_STATE != GameManager.eGameState.HealthInformationView)
         {
             rightScreenCam.Priority = 0;
-            if(screenDisplayedButtonTxt)    screenDisplayedButtonTxt.enabled = false;
-            if (screenDisplayedButtonImg)   screenDisplayedButtonImg.enabled = false;
+            if (screenDisplayedButtonTxt) screenDisplayedButtonTxt.enabled = false;
+            if (screenDisplayedButtonImg) screenDisplayedButtonImg.enabled = false;
             GameManager._LAST_SCREEN_STATE = GameManager.eGameState.IDView;
         }
     }

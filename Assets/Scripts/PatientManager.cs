@@ -21,12 +21,8 @@ public class PatientManager : MonoBehaviour
     private void Update()
     {
         patientParent = GameObject.Find("Lvl " + GameManager.currentLvl.ToString());
-        //if(currentPatient > 0) Debug.Log(patientParent.transform.GetChild(currentPatient - 1).name);
-        //if(currentPatient > 0) currentPatient_go = patientParent.transform.GetChild(currentPatient - 1).gameObject;
 
         if (GameManager._GAME_STATE == GameManager.eGameState.End) currentPatient = 0;
-        //Debug.Log(currentPatient_go.name);
-        //Debug.Log(currentPatient_go.GetComponent<MedicalInfoHolder>().crewMemberInfo.first_name);
     }
     public void SendBackPatient()
     {

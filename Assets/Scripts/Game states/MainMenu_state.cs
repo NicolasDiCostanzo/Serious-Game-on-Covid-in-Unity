@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
 using UnityEngine;
-using Cinemachine;
 
 public class MainMenu_state : MonoBehaviour
 {
@@ -22,6 +20,6 @@ public class MainMenu_state : MonoBehaviour
 
     private void OnDisable()
     {
-        if(GameManager._GAME_STATE != GameManager.eGameState.Story) camOnMainMenu.Priority = 0;
+        if (GameManager._GAME_STATE != GameManager.eGameState.Story) camOnMainMenu.Priority = 0;
     }
 }

@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using Cinemachine;
+﻿using Cinemachine;
+using UnityEngine;
 
 public class Desk_State : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class Desk_State : MonoBehaviour
         buttonLeftScreen = GameObject.Find("button_to_ship_screen");
         DeskCam = GameObject.Find("DeskViewCam").GetComponent<CinemachineVirtualCamera>();
 
-        if(DeskCam.Priority <1) DeskCam.Priority = 1;
+        if (DeskCam.Priority < 1) DeskCam.Priority = 1;
 
         GameManager.ActiveButton(buttonLeftScreen);
         GameManager.ActiveButton(buttonRightScreen);
@@ -27,6 +26,6 @@ public class Desk_State : MonoBehaviour
     private void OnDisable()
     {
         DeskCam.Priority = 0;
-        if(GameManager._GAME_STATE == GameManager.eGameState.DecisionView) GameManager.ChangeButtonTxt(buttonRightScreen, "Look at crew member's information");
+        if (GameManager._GAME_STATE == GameManager.eGameState.DecisionView) GameManager.ChangeButtonTxt(buttonRightScreen, "Look at crew member's information");
     }
 }

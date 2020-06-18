@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class yes_no_btn_managment : MonoBehaviour
 {
@@ -13,6 +11,8 @@ public class yes_no_btn_managment : MonoBehaviour
 
     public void SendToDestination()
     {
+        FindObjectOfType<SoundManager>().Play("Valider_choix");
+
         PatientManager.currentPatient_go.GetComponent<CrewMemberMovement>().SendBack();
 
         switch (transform.name)

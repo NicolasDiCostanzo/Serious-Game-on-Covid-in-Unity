@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class DisplayPatientInfoOnID : MonoBehaviour
 {
-    Image img;
-
     TextMeshProUGUI firstName;
     TextMeshProUGUI lastName;
     TextMeshProUGUI sex;
@@ -19,8 +17,6 @@ public class DisplayPatientInfoOnID : MonoBehaviour
     // Update is called once per frame
     private void OnEnable()
     {
-        img = transform.GetChild(0).gameObject.GetComponent<Image>();
-
         firstName = transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         lastName = transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
         sex = transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();

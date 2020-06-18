@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
 using UnityEngine;
-using Cinemachine;
 
 
 public class End_State : MonoBehaviour
@@ -9,6 +7,8 @@ public class End_State : MonoBehaviour
     CinemachineVirtualCamera DeskCam;
     private void OnEnable()
     {
+        FindObjectOfType<SoundManager>().Play("Vaisseau");
+
         GameManager.currentLvl++;
         PatientManager.currentPatient = 0;
 

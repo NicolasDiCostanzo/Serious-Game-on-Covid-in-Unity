@@ -18,7 +18,6 @@ public class DisplayFirstTutoInfo : MonoBehaviour
         {
             levelArrow.SetActive(false);
             gameObject.SetActive(false);
-           //callPatientButton = GameObject.Find("callPatientButton");
 
             GameManager.ActiveButton(GameObject.Find("callPatientButton"));
             callNewPatientArrow.SetActive(true);

@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(_GAME_STATE);
+        Debug.Log(_GAME_STATE);
         switch (_GAME_STATE)
         {
             case eGameState.MainMenu:
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        if(_GAME_STATE != eGameState.MainMenu && Input.GetKeyDown(KeyCode.Escape))
+        if (_GAME_STATE != eGameState.MainMenu && Input.GetKeyDown(KeyCode.Escape))
         {
             if (!pause.activeInHierarchy)
             {
@@ -199,6 +199,7 @@ public class GameManager : MonoBehaviour
 
     public void Switch_ID_HealthInfo()
     {
+        FindObjectOfType<SoundManager>().Play("Change_screen");
         if (_GAME_STATE == eGameState.IDView)
         {
             _GAME_STATE = eGameState.HealthInformationView;

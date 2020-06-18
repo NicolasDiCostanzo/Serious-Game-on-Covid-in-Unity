@@ -96,12 +96,12 @@ public class Result_state : MonoBehaviour
             }
             else
             {
-                cureProgress = toMission_Healthy * 20;
+                cureProgress = toMission_Healthy * 100;
             }
         }
 
         if (toMission_Covid > 0) //s'il y a un seul infecté par le Covid-19 envoyé en mission, alors la mission est annulée et ne fait pas avancer la recherche du remède
-            cureProgress = 0;       
+            cureProgress = 0;
 
         GameManager.cure += cureProgress;
         progressBar_Script.prctToAddToResearch = GameManager.cure;
@@ -112,7 +112,7 @@ public class Result_state : MonoBehaviour
     private void OnDisable()
     {
         ProgressBarManager progressBar_Script = GameObject.Find("Cure progression").GetComponent<ProgressBarManager>();
-        if(progressBar_Script.isActiveAndEnabled) progressBar_Script.enabled = false;
+        if (progressBar_Script.isActiveAndEnabled) progressBar_Script.enabled = false;
         GameManager.resultPanel.SetActive(false);
 
         if (ButtonToOpenResultDetails.activeInHierarchy) ButtonToOpenResultDetails.SetActive(false);
